@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const section = button.getAttribute('data-section');
       const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
 
-      // If clicking the already open panel, close it normally
       if (targetPanel === currentPanel) {
         currentPanel.classList.remove('active');
         currentPanel.classList.add('closing');
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // If a different panel is open, fade out current and fade in new
       if (currentPanel) {
         currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
         targetPanel.style.display = 'block';
@@ -51,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
           currentPanel = targetPanel;
         }, 300);
       } else {
-        // No panel open, slide up normally
         targetPanel.style.display = 'block';
         requestAnimationFrame(() => {
           targetPanel.classList.add('active');
