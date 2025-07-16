@@ -4,13 +4,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const openPdfButton = document.getElementById('openPdfButton');
   const pdfContainer = document.getElementById('pdfContainer');
 
-  // Use the full absolute URL here:
+  // Your PDF URL
   const pdfUrl = 'https://btmejia-teaching-resources.netlify.app/docs/Bartering-Real-World-Examples.pdf';
 
+  // Simple mobile detection function
+  function isMobile() {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  }
+
   openPdfButton.addEventListener('click', () => {
-    PDFObject.embed(pdfUrl, "#pdfContainer");
-    pdfModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (isMobile()) {
+      // On mobile devices, open PDF in a new tab instead of embedding
+      window.open(pdfUrl, '_blank');
+    } else {
+      // On desktop, embed PDF in the modal
+      PDFObject.embed(pdfUrl, "#pdfContainer");
+      pdfModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
   });
 
   function closeModalFunc() {
