@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+/* Body */
 body {
   background-color: #f2f2fe;
   font-family: 'Inter', sans-serif;
@@ -63,62 +64,42 @@ body {
   background-color: #2a2c3a;
 }
 
-/* Hamburger Button */
+/* Hamburger */
 .circle-wrapper {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 60px;
-  height: 60px;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
   background-color: #13141b;
   border-radius: 50%;
-  z-index: 1001;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+}
+
+.circle-wrapper.expanded {
+  left: 140px;
+}
+
+.circle-button {
+  width: 70px;
+  height: 70px;
+  background-color: #f2f2fe;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 
-.circle-button {
-  width: 45px;
-  height: 45px;
-  background-color: #f2f2fe;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .menu-toggle {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: #13141b;
   user-select: none;
-}
-
-/* Mobile Overlay Menu */
-.mobile-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #13141b;
-  z-index: 1000;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-overlay.active {
-  display: flex;
-}
-
-.mobile-nav a {
-  color: #fff;
-  font-size: 1.8rem;
-  margin: 15px 0;
-  text-decoration: none;
 }
 
 /* Header */
@@ -132,6 +113,7 @@ body {
   font-weight: 500;
   color: #13141b;
   margin-bottom: 12px;
+  user-select: none;
 }
 
 .site-title {
@@ -142,7 +124,7 @@ body {
   line-height: 1;
 }
 
-/* Pill Buttons */
+/* Pill Containers */
 .container-wrapper {
   display: flex;
   justify-content: center;
@@ -164,11 +146,19 @@ body {
   user-select: none;
 }
 
-.container.section1 { background-color: #d9534f; }
-.container.section2 { background-color: #337ab7; }
-.container.section3 { background-color: #5cb85c; }
+.container.section1 {
+  background-color: #d9534f;
+}
 
-/* Expanded Panels */
+.container.section2 {
+  background-color: #337ab7;
+}
+
+.container.section3 {
+  background-color: #5cb85c;
+}
+
+/* Expanded Panels Container */
 .expanded-panels {
   position: relative;
   margin: 20px auto 0;
@@ -176,27 +166,7 @@ body {
   max-width: 100%;
 }
 
-.expanded-panel {
-  width: 960px;
-  height: 70vh;
-  display: none;
-  margin: 0 auto;
-  padding: 20px;
-  overflow-y: auto;
-  border-radius: 20px 20px 0 0;
-  color: #e6e9f1;
-  font-size: 1.2rem;
-  opacity: 0;
-  transform: translateY(100%);
-  position: relative;
-}
-
-.expanded-panel.active {
-  display: block;
-  animation: slideUp 0.4s ease forwards;
-}
-
-/* Animations */
+/* Panel Animations */
 @keyframes slideUp {
   from {
     transform: translateY(100%);
@@ -219,6 +189,7 @@ body {
   }
 }
 
+/* Fade Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: none; }
   to { opacity: 1; transform: none; }
@@ -229,12 +200,52 @@ body {
   to { opacity: 0; transform: none; }
 }
 
-/* Assignment Card */
+/* Panel Styles */
+.expanded-panel {
+  width: 960px;
+  height: calc(100vh - 40px - 20px - 70px - 20px);
+  max-height: 100vh;
+  display: none;
+  margin: 0 auto;
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 20px 20px 0 0;
+  color: #e6e9f1;
+  font-size: 1.2rem;
+  opacity: 0;
+  transform: translateY(100%);
+  position: relative;
+}
+
+.expanded-panel.active {
+  display: block;
+  animation: slideUp 0.4s ease forwards;
+}
+
+.expanded-panel.closing {
+  animation: slideDown 0.4s ease forwards;
+}
+
+/* Panel Background Colors */
+.expanded-panel.section1-panel {
+  background-color: #d9534f;
+}
+
+.expanded-panel.section2-panel {
+  background-color: #337ab7;
+}
+
+.expanded-panel.section3-panel {
+  background-color: #5cb85c;
+}
+
+/* Assignment card – pill layout, top-left aligned */
 .assignment-card {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   padding: 10px 16px;
   border-radius: 9999px;
   max-width: 260px;
+  margin: 0;
   color: #fff;
   display: flex;
   align-items: center;
@@ -245,6 +256,7 @@ body {
   left: 20px;
 }
 
+/* Circular Open PDF Button with icon */
 .open-pdf-btn {
   background-color: #fff;
   color: #d9534f;
@@ -252,24 +264,39 @@ body {
   width: 64px;
   height: 64px;
   border-radius: 50%;
+  font-weight: 700;
   font-size: 1.2rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+}
+
+.open-pdf-btn:hover {
+  background-color: #f7f7f7;
+}
+
+.assignment-title {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 /* Modal */
 .modal {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
+  z-index: 1000;
 }
 
 .modal.active {
@@ -277,15 +304,14 @@ body {
 }
 
 .modal-content {
-  background: #222;
-  border-radius: 10px;
+  position: relative;
   width: 80vw;
   height: 80vh;
-  position: relative;
-  padding: 10px;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 .modal-content iframe {
@@ -298,12 +324,13 @@ body {
 #closeModal {
   position: absolute;
   top: 10px;
-  right: 15px;
+  left: 15px;
   font-size: 2rem;
-  color: #fff;
+  color: #eee;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 10;
 }
 
 /* Footer */
@@ -318,33 +345,4 @@ footer p {
   font-size: 0.9rem;
   color: #e6e9f1;
   font-weight: 300;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .container-wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .container {
-    width: 80vw;
-    font-size: 1rem;
-    padding: 15px 20px;
-  }
-
-  .header .site-title {
-    font-size: 3rem;
-  }
-
-  .subtitle {
-    font-size: 1.6rem;
-  }
-
-  .left-bar,
-  .left-bar.expanded,
-  .side-menu {
-    display: none !important;
-  }
 }
