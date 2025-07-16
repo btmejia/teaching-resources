@@ -309,7 +309,7 @@ body {
   height: 80vh;
   background: #222;
   border-radius: 10px;
-  overflow: auto; /* <-- changed here to enable scroll */
+  overflow: auto; /* enable scroll */
   display: flex;
   flex-direction: column;
 }
@@ -354,21 +354,31 @@ footer p {
   gap: 10px;
   justify-content: center;
   margin: 10px 0;
+  flex-wrap: wrap;
 }
 
 #pdf-controls button {
   background: #444;
   color: #fff;
   border: none;
-  padding: 6px 12px;
-  font-size: 0.9rem;
+  padding: 6px 14px;
+  font-size: 1rem;
+  font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
   user-select: none;
+  min-width: 50px;
+  transition: background-color 0.3s ease;
 }
 
-#pdf-controls button:hover {
+#pdf-controls button:hover:not(:disabled) {
   background: #666;
+}
+
+#pdf-controls button:disabled {
+  background: #222;
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 #pdf-canvas {
