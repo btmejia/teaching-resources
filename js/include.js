@@ -33,25 +33,46 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // If a different panel is open, fade out current and fade in new
       if (currentPanel) {
-        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+        // Show new panel behind old panel
         targetPanel.style.display = 'block';
-        targetPanel.style.opacity = 0;
-        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+        targetPanel.style.opacity = 1;
+        targetPanel.style.position = 'absolute';
+        targetPanel.style.top = '0';
+        targetPanel.style.left = '50%';
+        targetPanel.style.transform = 'translateX(-50%)';
+        targetPanel.style.zIndex = '0';
+
+        // Old panel on top to fade out
+        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+        currentPanel.style.position = 'absolute';
+        currentPanel.style.top = '0';
+        currentPanel.style.left = '50%';
+        currentPanel.style.transform = 'translateX(-50%)';
+        currentPanel.style.zIndex = '1';
 
         setTimeout(() => {
           currentPanel.style.display = 'none';
           currentPanel.style.animation = '';
+          currentPanel.style.position = '';
+          currentPanel.style.top = '';
+          currentPanel.style.left = '';
+          currentPanel.style.transform = '';
+          currentPanel.style.zIndex = '';
           currentPanel.classList.remove('active');
 
           targetPanel.classList.add('active');
-          targetPanel.style.animation = '';
+          targetPanel.style.position = '';
+          targetPanel.style.top = '';
+          targetPanel.style.left = '';
+          targetPanel.style.transform = '';
+          targetPanel.style.zIndex = '';
           targetPanel.style.opacity = '';
+
           currentPanel = targetPanel;
         }, 300);
       } else {
-        // No panel open, slide up normally
+        // No panel open, open normally with slideUp
         targetPanel.style.display = 'block';
         requestAnimationFrame(() => {
           targetPanel.classList.add('active');
