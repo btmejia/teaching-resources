@@ -309,17 +309,18 @@ body {
   height: 80vh;
   background: #222;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: auto; /* <-- changed here to enable scroll */
   display: flex;
   flex-direction: column;
 }
 
-.modal-content iframe {
+/* Remove iframe styles since we're using canvas */
+/* modal-content iframe {
   flex: 1;
   border: none;
   width: 100%;
   height: 100%;
-}
+} */
 
 #closeModal {
   position: absolute;
