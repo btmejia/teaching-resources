@@ -284,13 +284,14 @@ body {
   margin: 0;
 }
 
-/* Modal styling */
+/* Modal */
 .modal {
   position: fixed;
   top: 0; left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
   display: none;
   align-items: center;
   justify-content: center;
@@ -310,6 +311,7 @@ body {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 #closeModal {
@@ -321,11 +323,25 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#closeModal:hover {
+  color: #f44336;
 }
 
 #pdfContainer {
   flex-grow: 1;
   overflow: auto;
+}
+
+#pdfContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+#pdfContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
 }
 
 /* Footer */
@@ -340,4 +356,103 @@ footer p {
   font-size: 0.9rem;
   color: #e6e9f1;
   font-weight: 300;
+}
+
+/* ===============================
+   Responsive Styles for Mobile
+================================== */
+@media (max-width: 900px) {
+  .left-bar,
+  .left-bar.expanded {
+    width: 50px;
+    padding-top: 60px;
+  }
+
+  .side-menu {
+    opacity: 0 !important;
+    transform: translateX(-100%);
+    pointer-events: none !important;
+  }
+
+  .circle-wrapper,
+  .circle-wrapper.expanded {
+    left: 10px !important;
+    width: 60px;
+    height: 60px;
+  }
+
+  .circle-button {
+    width: 50px;
+    height: 50px;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.8rem;
+  }
+
+  .site-title {
+    font-size: 3.5rem;
+    white-space: normal;
+    padding: 0 10px;
+  }
+
+  .container-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    width: 90vw;
+    max-width: 400px;
+    margin: 20px auto;
+  }
+
+  .container {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+
+  .expanded-panel {
+    width: 95vw !important;
+    height: 60vh !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+  }
+
+  .modal-content {
+    width: 95vw !important;
+    height: 70vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .site-title {
+    font-size: 2.5rem;
+  }
+
+  .circle-wrapper,
+  .circle-wrapper.expanded {
+    width: 50px !important;
+    height: 50px !important;
+    left: 5px !important;
+  }
+
+  .circle-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .menu-toggle {
+    font-size: 1.2rem !important;
+  }
+
+  .container-wrapper {
+    max-width: 320px;
+  }
 }
