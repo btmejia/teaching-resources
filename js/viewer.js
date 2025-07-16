@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const openPdfButton = document.getElementById('openPdfButton');
   const pdfContainer = document.getElementById('pdfContainer');
 
-  // Update path if your pdf location changes
-  const pdfUrl = '/docs/Bartering-Real-World-Examples.pdf';
+  // Use the full absolute URL here:
+  const pdfUrl = 'https://btmejia-teaching-resources.netlify.app/docs/Bartering-Real-World-Examples.pdf';
 
   openPdfButton.addEventListener('click', () => {
     PDFObject.embed(pdfUrl, "#pdfContainer");
