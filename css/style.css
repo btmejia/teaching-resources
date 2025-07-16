@@ -189,7 +189,7 @@ body {
   }
 }
 
-/* Finalized expanded panel */
+/* Final expanded panel */
 .expanded-panel {
   width: 960px;
   height: calc(100vh - 40px - 20px - 70px - 20px);
@@ -227,12 +227,12 @@ body {
   background-color: #5cb85c;
 }
 
-/* Assignment card container layout */
+/* Assignment card container layout – pill shape */
 .assignment-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 15px;
-  border-radius: 10px;
-  max-width: 400px;
+  padding: 15px 25px;
+  border-radius: 9999px;
+  width: fit-content;
   margin: 0 auto;
   color: #fff;
   display: flex;
@@ -240,18 +240,23 @@ body {
   gap: 20px;
 }
 
-/* Pill-shaped Open PDF Button */
+/* Circular Open PDF Button */
 .open-pdf-btn {
   background-color: #fff;
   color: #d9534f;
   border: none;
-  padding: 10px 30px;
-  border-radius: 9999px;
-  font-weight: 600;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  min-width: 100px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .open-pdf-btn:hover {
