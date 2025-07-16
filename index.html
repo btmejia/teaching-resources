@@ -71,16 +71,13 @@
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
 
       <!-- PDF Controls -->
-      <div id="pdf-controls" aria-label="PDF navigation controls">
-        <button id="prevPage" aria-label="Previous page">← Prev</button>
-        <span id="pageInfo" aria-live="polite" aria-atomic="true">Page 1 / 1</span>
-        <button id="nextPage" aria-label="Next page">Next →</button>
+      <div id="pdf-controls" aria-label="PDF zoom controls">
         <button id="zoomOut" aria-label="Zoom out">−</button>
         <button id="zoomIn" aria-label="Zoom in">+</button>
       </div>
 
-      <!-- Canvas to render PDF -->
-      <canvas id="pdf-canvas"></canvas>
+      <!-- Container for all pages -->
+      <div id="pdf-container" tabindex="0"></div>
     </div>
   </div>
 
