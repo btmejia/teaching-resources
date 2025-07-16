@@ -189,6 +189,17 @@ body {
   }
 }
 
+/* Fade Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: none; }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: none; }
+}
+
 /* Panel Styles */
 .expanded-panel {
   width: 960px;
