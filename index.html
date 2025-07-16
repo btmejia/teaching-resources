@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My GitHub Page</title>
-
+  <title>Teaching Resources</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
-
-  <!-- PDFObject library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-  <!-- Sidebar -->
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenuOverlay" class="mobile-overlay">
+    <nav class="mobile-nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Sidebar (for desktop) -->
   <div class="left-bar">
     <div class="side-menu">
       <a href="#">Home</a>
@@ -25,8 +27,8 @@
     </div>
   </div>
 
-  <!-- Hamburger circle button -->
-  <div class="circle-wrapper">
+  <!-- Hamburger Button -->
+  <div class="circle-wrapper" id="hamburgerWrapper">
     <div class="circle-button" id="menu-toggle">
       <span class="menu-toggle">&#9776;</span>
     </div>
@@ -47,40 +49,77 @@
 
   <!-- Expanded Panels -->
   <div class="expanded-panels">
-    <!-- Red Panel: Student Assignments -->
     <div class="expanded-panel section1-panel">
       <div class="assignment-card">
-        <button class="open-pdf-btn" id="openPdfButton" aria-label="Open PDF preview">
+        <button class="open-pdf-btn" id="openPdfButton">
           <i class="fas fa-magnifying-glass"></i>
         </button>
         <h3 class="assignment-title">Bartering Real World Examples</h3>
       </div>
     </div>
-
-    <!-- Blue Panel -->
     <div class="expanded-panel section2-panel">
       <h2>Section 2 Content</h2>
       <p>Put your section 2 content here.</p>
     </div>
-
-    <!-- Green Panel -->
     <div class="expanded-panel section3-panel">
       <h2>Section 3 Content</h2>
       <p>Put your section 3 content here.</p>
     </div>
   </div>
 
-  <!-- Modal Popup -->
+  <!-- Modal PDF Viewer -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
-      <div id="pdfContainer" style="height: 80vh; width: 100%;"></div>
+      <iframe src="docs/Bartering-Real-World-Examples.pdf" frameborder="0" title="PDF Viewer"></iframe>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/viewer.js"></script>
   <script src="js/include.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileOverlay = document.getElementById('mobileMenuOverlay');
+      const leftBar = document.querySelector('.left-bar');
 
+      // Menu toggle
+      menuToggle.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          mobileOverlay.classList.toggle('active');
+        } else {
+          leftBar.classList.toggle('expanded');
+        }
+      });
+
+      // PDF Modal
+      const pdfModal = document.getElementById('pdfModal');
+      const closeModal = document.getElementById('closeModal');
+      const openPdfButton = document.getElementById('openPdfButton');
+
+      openPdfButton.addEventListener('click', () => {
+        pdfModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+
+      closeModal.addEventListener('click', () => {
+        pdfModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) {
+          pdfModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+          pdfModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
