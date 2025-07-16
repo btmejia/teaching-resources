@@ -1,1 +1,329 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  background-color: #f2f2fe;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Sidebar */
+.left-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background-color: #13141b;
+  z-index: 10;
+  padding-top: 100px;
+  transition: width 0.3s ease, padding-top 0.3s ease;
+  overflow: hidden;
+}
+
+.left-bar.expanded {
+  width: 180px;
+  padding-top: 70px;
+}
+
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 20px;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.left-bar.expanded .side-menu {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.side-menu a {
+  color: #e6e9f1;
+  text-decoration: none;
+  font-weight: 300;
+  font-size: 1.1rem;
+  padding: 8px 0;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.side-menu a:hover {
+  background-color: #2a2c3a;
+}
+
+/* Hamburger */
+.circle-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  background-color: #13141b;
+  border-radius: 50%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+}
+
+.circle-wrapper.expanded {
+  left: 140px;
+}
+
+.circle-button {
+  width: 70px;
+  height: 70px;
+  background-color: #f2f2fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  font-size: 2rem;
+  color: #13141b;
+  user-select: none;
+}
+
+/* Header */
+.header {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #13141b;
+  margin-bottom: 12px;
+  user-select: none;
+}
+
+.site-title {
+  font-size: 6rem;
+  font-weight: 700;
+  color: #13141b;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Pill Containers */
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 20px auto 0;
+  width: fit-content;
+}
+
+.container {
+  width: 300px;
+  padding: 20px 30px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+  border-radius: 9999px;
+  color: #e6e9f1;
+  cursor: pointer;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.container.section1 {
+  background-color: #d9534f;
+}
+
+.container.section2 {
+  background-color: #337ab7;
+}
+
+.container.section3 {
+  background-color: #5cb85c;
+}
+
+/* Expanded Panels Container */
+.expanded-panels {
+  position: relative;
+  margin: 20px auto 0;
+  width: calc(300px * 3 + 120px * 2);
+  max-width: 100%;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.expanded-panel {
+  display: none;
+  width: 100%;
+  height: 475px;
+  padding: 20px;
+  color: #e6e9f1;
+  font-size: 1.2rem;
+  overflow-y: auto;
+  border-radius: 20px 20px 0 0;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.expanded-panel.active {
+  display: block;
+  animation: slideUp 0.4s ease forwards;
+}
+
+.expanded-panel.closing {
+  animation: slideDown 0.4s ease forwards;
+}
+
+/* Color match */
+.expanded-panel.section1-panel {
+  background-color: #d9534f;
+}
+
+.expanded-panel.section2-panel {
+  background-color: #337ab7;
+}
+
+.expanded-panel.section3-panel {
+  background-color: #5cb85c;
+}
+
+/* Assignment card container layout */
+.assignment-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Pill-shaped Open PDF Button */
+.open-pdf-btn {
+  background-color: #fff;
+  color: #d9534f;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 9999px; /* pill shape */
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 100px;
+  text-align: center;
+}
+
+.open-pdf-btn:hover {
+  background-color: #f7f7f7;
+}
+
+/* Assignment title style */
+.assignment-title {
+  font-weight: 500;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  width: 80vw;
+  height: 80vh;
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* Close Button — moved to top-left */
+#closeModal {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 2rem;
+  color: #eee;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+footer p {
+  font-size: 0.9rem;
+  color: #e6e9f1;
+  font-weight: 300;
+}
 
