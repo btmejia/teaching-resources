@@ -2,7 +2,7 @@
 
 let pdfDoc = null;
 let pageNum = 1;
-let scale = 2;
+let scale = 1.5; // Zoomed out a bit more from 2
 const canvas = document.getElementById('pdf-canvas');
 const ctx = canvas.getContext('2d');
 
@@ -49,4 +49,3 @@ document.getElementById('closeModal').addEventListener('click', () => {
   document.getElementById('pdfModal').classList.remove('active');
   document.body.style.overflow = '';
 });
-
