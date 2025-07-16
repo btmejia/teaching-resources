@@ -166,7 +166,7 @@ body {
   max-width: 100%;
 }
 
-/* Animations */
+/* Panel Animations */
 @keyframes slideUp {
   from {
     transform: translateY(100%);
@@ -189,7 +189,7 @@ body {
   }
 }
 
-/* Final expanded panel */
+/* Panel Styles */
 .expanded-panel {
   width: 960px;
   height: calc(100vh - 40px - 20px - 70px - 20px);
@@ -215,7 +215,7 @@ body {
   animation: slideDown 0.4s ease forwards;
 }
 
-/* Color match */
+/* Panel Background Colors */
 .expanded-panel.section1-panel {
   background-color: #d9534f;
 }
@@ -228,24 +228,24 @@ body {
   background-color: #5cb85c;
 }
 
-/* Assignment card container layout – pill shape, top-left aligned */
+/* Assignment card – pill layout, top-left aligned */
 .assignment-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 12px 20px;
+  padding: 10px 16px;
   border-radius: 9999px;
-  max-width: 320px;
+  max-width: 260px;
   margin: 0;
   color: #fff;
   display: flex;
   align-items: center;
-  gap: 15px;
-  font-size: 1rem;
+  gap: 12px;
+  font-size: 0.95rem;
   position: absolute;
   top: 20px;
   left: 20px;
 }
 
-/* Circular Open PDF Button */
+/* Circular Open PDF Button with icon */
 .open-pdf-btn {
   background-color: #fff;
   color: #d9534f;
@@ -254,10 +254,9 @@ body {
   height: 64px;
   border-radius: 50%;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,7 +267,6 @@ body {
   background-color: #f7f7f7;
 }
 
-/* Assignment title style */
 .assignment-title {
   font-weight: 500;
   font-size: 1.1rem;
@@ -312,7 +310,6 @@ body {
   height: 100%;
 }
 
-/* Close Button */
 #closeModal {
   position: absolute;
   top: 10px;
