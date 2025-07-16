@@ -4,8 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My GitHub Page</title>
+
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <!-- PDFObject library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
 </head>
 <body>
 
@@ -40,10 +47,10 @@
 
   <!-- Expanded Panels -->
   <div class="expanded-panels">
-    <!-- Red Panel -->
+    <!-- Red Panel: Student Assignments -->
     <div class="expanded-panel section1-panel">
       <div class="assignment-card">
-        <button class="open-pdf-btn" id="openPdfButton">
+        <button class="open-pdf-btn" id="openPdfButton" aria-label="Open PDF preview">
           <i class="fas fa-magnifying-glass"></i>
         </button>
         <h3 class="assignment-title">Bartering Real World Examples</h3>
@@ -63,15 +70,17 @@
     </div>
   </div>
 
-  <!-- Modal PDF Preview -->
+  <!-- Modal Popup -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
-      <iframe src="docs/Bartering-Real-World-Examples.pdf" frameborder="0" title="PDF Viewer"></iframe>
+      <div id="pdfContainer" style="height: 80vh; width: 100%;"></div>
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- Scripts -->
+  <script src="js/viewer.js"></script>
   <script src="js/include.js"></script>
+
 </body>
 </html>
