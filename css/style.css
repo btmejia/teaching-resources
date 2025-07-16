@@ -346,3 +346,34 @@ footer p {
   color: #e6e9f1;
   font-weight: 300;
 }
+
+/* PDF viewer controls */
+#pdf-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+#pdf-controls button {
+  background: #444;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#pdf-controls button:hover {
+  background: #666;
+}
+
+#pdf-canvas {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+  background: #fff;
+  border-radius: 8px;
+}
