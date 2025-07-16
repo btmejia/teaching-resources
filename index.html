@@ -6,6 +6,8 @@
   <title>My GitHub Page</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- PDF.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.338/pdf.min.js"></script>
 </head>
 <body>
 
@@ -40,44 +42,51 @@
 
   <!-- Expanded Panels -->
   <div class="expanded-panels">
+    <!-- Red Panel: Student Assignments -->
     <div class="expanded-panel section1-panel">
       <div class="assignment-card">
-        <button class="open-pdf-btn" id="openPdfButton">
+        <button class="open-pdf-btn" id="openPdfButton" aria-label="Open PDF preview">
           <i class="fas fa-magnifying-glass"></i>
         </button>
         <h3 class="assignment-title">Bartering Real World Examples</h3>
       </div>
     </div>
+
+    <!-- Blue Panel -->
     <div class="expanded-panel section2-panel">
       <h2>Section 2 Content</h2>
       <p>Put your section 2 content here.</p>
     </div>
+
+    <!-- Green Panel -->
     <div class="expanded-panel section3-panel">
       <h2>Section 3 Content</h2>
       <p>Put your section 3 content here.</p>
     </div>
   </div>
 
-  <!-- Modal with PDF.js viewer -->
+  <!-- Modal Popup -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
-      <div id="pdf-controls">
-        <button id="zoomIn">Zoom In</button>
-        <button id="zoomOut">Zoom Out</button>
+
+      <!-- PDF Controls -->
+      <div id="pdf-controls" aria-label="PDF navigation controls">
+        <button id="prevPage" aria-label="Previous page">← Prev</button>
+        <span id="pageInfo" aria-live="polite" aria-atomic="true">Page 1 / 1</span>
+        <button id="nextPage" aria-label="Next page">Next →</button>
+        <button id="zoomOut" aria-label="Zoom out">−</button>
+        <button id="zoomIn" aria-label="Zoom in">+</button>
       </div>
+
+      <!-- Canvas to render PDF -->
       <canvas id="pdf-canvas"></canvas>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <!-- PDF.js library from CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-
-  <!-- Your existing JS -->
+  <!-- JS -->
+  <script src="js/viewer.js"></script>
   <script src="js/include.js"></script>
 
-  <!-- PDF viewer JS -->
-  <script src="js/viewer.js"></script>
 </body>
 </html>
