@@ -4,8 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My GitHub Page</title>
+  
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <!-- PDF.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.338/pdf.min.js"></script>
 </head>
@@ -70,20 +72,21 @@
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
 
-      <!-- PDF Controls -->
-      <div id="pdf-controls" aria-label="PDF zoom controls">
+      <!-- PDF controls -->
+      <div id="pdf-controls">
         <button id="zoomOut" aria-label="Zoom out">−</button>
         <button id="zoomIn" aria-label="Zoom in">+</button>
       </div>
 
-      <!-- Container for all pages -->
-      <div id="pdf-container" tabindex="0"></div>
+      <!-- PDF container -->
+      <div id="pdf-container" tabindex="0" aria-label="PDF document viewer"></div>
     </div>
   </div>
 
-  <!-- JS -->
-  <script src="js/viewer.js"></script>
+  <!-- Your other JS -->
   <script src="js/include.js"></script>
+  <!-- PDF viewer JS -->
+  <script src="js/viewer.js"></script>
 
 </body>
 </html>
