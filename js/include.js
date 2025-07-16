@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Sidebar toggle
   const menuToggle = document.getElementById('menu-toggle');
   const leftBar = document.querySelector('.left-bar');
   const circleWrapper = document.querySelector('.circle-wrapper');
@@ -10,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     sideMenu.classList.toggle('expanded');
   });
 
+  // Colored button panel toggle
   const buttons = document.querySelectorAll('.container');
-  const panels = document.querySelectorAll('.expanded-panel');
   let currentPanel = null;
 
   buttons.forEach(button => {
@@ -54,33 +55,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     });
-  });
-
-  const pdfModal = document.getElementById('pdfModal');
-  const closeModal = document.getElementById('closeModal');
-  const openPdfButton = document.getElementById('openPdfButton');
-
-  openPdfButton.addEventListener('click', () => {
-    pdfModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  });
-
-  closeModal.addEventListener('click', () => {
-    pdfModal.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-
-  pdfModal.addEventListener('click', (e) => {
-    if (e.target === pdfModal) {
-      pdfModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
-      pdfModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
   });
 });
