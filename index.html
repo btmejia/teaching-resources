@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My GitHub Page</title>
+  <title>Billy Mejia's Teaching Resources</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -24,41 +24,46 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="subtitle">Billy Mejia's</div>
-    <h1 class="site-title">Teaching Resources</h1>
-  </header>
+  <!-- Main content wrapper -->
+  <main class="main-content">
 
-  <!-- Colored Buttons -->
-  <div class="container-wrapper">
-    <div class="container section1" data-section="section1">Student Assignments</div>
-    <div class="container section2" data-section="section2">Section 2</div>
-    <div class="container section3" data-section="section3">Section 3</div>
-  </div>
+    <!-- Header -->
+    <header class="header">
+      <div class="subtitle">Billy Mejia's</div>
+      <h1 class="site-title">Teaching Resources</h1>
+    </header>
 
-  <!-- Expanded Panels -->
-  <div class="expanded-panels">
-    <!-- Red Panel: Student Assignments -->
-    <div class="expanded-panel section1-panel">
-      <div class="assignment-card">
-        <button class="open-pdf-btn" id="openPdfButton">Open</button>
-        <h3 class="assignment-title">Bartering Real World Examples</h3>
+    <!-- Colored Buttons -->
+    <div class="container-wrapper">
+      <div class="container section1" data-section="section1">Student Assignments</div>
+      <div class="container section2" data-section="section2">Section 2</div>
+      <div class="container section3" data-section="section3">Section 3</div>
+    </div>
+
+    <!-- Expanded Panels -->
+    <div class="expanded-panels">
+      <!-- Red Panel: Student Assignments -->
+      <div class="expanded-panel section1-panel">
+        <div class="assignment-card">
+          <button class="open-pdf-btn" id="openPdfButton">Open</button>
+          <h3 class="assignment-title">Bartering Real World Examples</h3>
+        </div>
+      </div>
+
+      <!-- Blue Panel -->
+      <div class="expanded-panel section2-panel">
+        <h2>Section 2 Content</h2>
+        <p>Put your section 2 content here.</p>
+      </div>
+
+      <!-- Green Panel -->
+      <div class="expanded-panel section3-panel">
+        <h2>Section 3 Content</h2>
+        <p>Put your section 3 content here.</p>
       </div>
     </div>
 
-    <!-- Blue Panel -->
-    <div class="expanded-panel section2-panel">
-      <h2>Section 2 Content</h2>
-      <p>Put your section 2 content here.</p>
-    </div>
-
-    <!-- Green Panel -->
-    <div class="expanded-panel section3-panel">
-      <h2>Section 3 Content</h2>
-      <p>Put your section 3 content here.</p>
-    </div>
-  </div>
+  </main>
 
   <!-- Modal Popup -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
