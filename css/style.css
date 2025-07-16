@@ -189,17 +189,17 @@ body {
   }
 }
 
-/* Updated .expanded-panel with fixed width and calculated height to fill viewport */
+/* Expanded panel fixed width fills container width, height fills viewport below header/buttons */
 .expanded-panel {
-  height: calc(100vh - 40px - 20px - 70px - 20px); /* 100vh minus header padding, container-wrapper margin/padding, and margin */
+  width: 100%;
+  height: calc(100vh - 40px - 20px - 70px - 20px);
   max-height: 100vh;
-  width: 300px;
   display: none;
   padding: 20px;
-  color: #e6e9f1;
-  font-size: 1.2rem;
   overflow-y: auto;
   border-radius: 20px 20px 0 0;
+  color: #e6e9f1;
+  font-size: 1.2rem;
   opacity: 0;
   transform: translateY(100%);
 }
