@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>My GitHub Page</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
@@ -40,7 +40,6 @@
 
   <!-- Expanded Panels -->
   <div class="expanded-panels">
-    <!-- Red Panel: Student Assignments -->
     <div class="expanded-panel section1-panel">
       <div class="assignment-card">
         <button class="open-pdf-btn" id="openPdfButton">
@@ -49,37 +48,36 @@
         <h3 class="assignment-title">Bartering Real World Examples</h3>
       </div>
     </div>
-
-    <!-- Blue Panel -->
     <div class="expanded-panel section2-panel">
       <h2>Section 2 Content</h2>
       <p>Put your section 2 content here.</p>
     </div>
-
-    <!-- Green Panel -->
     <div class="expanded-panel section3-panel">
       <h2>Section 3 Content</h2>
       <p>Put your section 3 content here.</p>
     </div>
   </div>
 
-  <!-- Modal Popup -->
+  <!-- Modal with PDF.js viewer -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
-
-      <!-- ✅ Zoomed in version of PDF -->
-      <iframe
-        src="docs/Bartering-Real-World-Examples.pdf#zoom=200"
-        frameborder="0"
-        title="PDF Viewer"
-      ></iframe>
-
+      <div id="pdf-controls">
+        <button id="zoomIn">Zoom In</button>
+        <button id="zoomOut">Zoom Out</button>
+      </div>
+      <canvas id="pdf-canvas"></canvas>
     </div>
   </div>
 
-  <!-- JS -->
+  <!-- Scripts -->
+  <!-- PDF.js library from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <!-- Your existing JS -->
   <script src="js/include.js"></script>
 
+  <!-- PDF viewer JS -->
+  <script src="js/viewer.js"></script>
 </body>
 </html>
