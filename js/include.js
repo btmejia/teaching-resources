@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Colored button panel toggle
   const buttons = document.querySelectorAll('.container');
-  const panels = document.querySelectorAll('.expanded-panel');
   let currentPanel = null;
 
   buttons.forEach(button => {
