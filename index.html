@@ -6,10 +6,13 @@
   <title>My GitHub Page</title>
 
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
 
-  <!-- PDF.js library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.338/pdf.min.js"></script>
+  <!-- PDFObject library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
 </head>
 <body>
 
@@ -67,17 +70,11 @@
     </div>
   </div>
 
-  <!-- Modal Popup (PDF.js viewer) -->
+  <!-- Modal Popup -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
-
-      <div id="pdf-controls">
-        <button id="zoomOut" aria-label="Zoom out">−</button>
-        <button id="zoomIn" aria-label="Zoom in">+</button>
-      </div>
-
-      <div id="pdf-container" tabindex="0" aria-label="PDF document viewer"></div>
+      <div id="pdfContainer" style="height: 80vh; width: 100%;"></div>
     </div>
   </div>
 
