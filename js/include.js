@@ -1,59 +1,45 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Sidebar toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const leftBar = document.querySelector('.left-bar');
-  const circleWrapper = document.querySelector('.circle-wrapper');
-  const sideMenu = document.querySelector('.side-menu');
+// js/include.js
 
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileOverlay = document.getElementById('mobileMenuOverlay');
+  const leftBar = document.querySelector('.left-bar');
+
+  // Hamburger toggle
   menuToggle.addEventListener('click', () => {
-    leftBar.classList.toggle('expanded');
-    circleWrapper.classList.toggle('expanded');
-    sideMenu.classList.toggle('expanded');
+    if (window.innerWidth <= 768) {
+      mobileOverlay.classList.toggle('active');
+    } else {
+      leftBar.classList.toggle('expanded');
+    }
   });
 
-  // Colored button panel toggle
-  const buttons = document.querySelectorAll('.container');
-  let currentPanel = null;
+  // PDF modal logic
+  const pdfModal = document.getElementById('pdfModal');
+  const closeModal = document.getElementById('closeModal');
+  const openPdfButton = document.getElementById('openPdfButton');
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const section = button.getAttribute('data-section');
-      const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
+  openPdfButton.addEventListener('click', () => {
+    pdfModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
 
-      if (targetPanel === currentPanel) {
-        currentPanel.classList.remove('active');
-        currentPanel.classList.add('closing');
-        setTimeout(() => {
-          currentPanel.classList.remove('closing');
-          currentPanel.style.display = 'none';
-          currentPanel = null;
-        }, 400);
-        return;
-      }
+  closeModal.addEventListener('click', () => {
+    pdfModal.classList.remove('active');
+    document.body.style.overflow = '';
+  });
 
-      if (currentPanel) {
-        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
-        targetPanel.style.display = 'block';
-        targetPanel.style.opacity = 0;
-        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+  pdfModal.addEventListener('click', (e) => {
+    if (e.target === pdfModal) {
+      pdfModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
 
-        setTimeout(() => {
-          currentPanel.style.display = 'none';
-          currentPanel.style.animation = '';
-          currentPanel.classList.remove('active');
-
-          targetPanel.classList.add('active');
-          targetPanel.style.animation = '';
-          targetPanel.style.opacity = '';
-          currentPanel = targetPanel;
-        }, 300);
-      } else {
-        targetPanel.style.display = 'block';
-        requestAnimationFrame(() => {
-          targetPanel.classList.add('active');
-          currentPanel = targetPanel;
-        });
-      }
-    });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && pdfModal.classList.contains('active')) {
+      pdfModal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
   });
 });
