@@ -162,7 +162,7 @@ body {
 .expanded-panels {
   position: relative;
   margin: 20px auto 0;
-  width: calc(300px * 3 + 120px * 2);
+  width: 100%;
   max-width: 100%;
 }
 
@@ -189,12 +189,13 @@ body {
   }
 }
 
-/* Expanded panel fixed width fills container width, height fills viewport below header/buttons */
+/* Finalized expanded panel */
 .expanded-panel {
-  width: 100%;
+  width: 960px;
   height: calc(100vh - 40px - 20px - 70px - 20px);
   max-height: 100vh;
   display: none;
+  margin: 0 auto;
   padding: 20px;
   overflow-y: auto;
   border-radius: 20px 20px 0 0;
@@ -245,7 +246,7 @@ body {
   color: #d9534f;
   border: none;
   padding: 10px 30px;
-  border-radius: 9999px; /* pill shape */
+  border-radius: 9999px;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
