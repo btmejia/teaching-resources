@@ -162,68 +162,41 @@ body {
 .expanded-panels {
   position: relative;
   margin: 20px auto 0;
-  width: 100%;
+  width: 960px;
   max-width: 100%;
-}
-
-/* Panel Animations */
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-/* Fade Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: none; }
-  to { opacity: 1; transform: none; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; transform: none; }
-  to { opacity: 0; transform: none; }
+  height: calc(100vh - 40px - 20px - 70px - 20px);
 }
 
 /* Panel Styles */
 .expanded-panel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 960px;
-  height: calc(100vh - 40px - 20px - 70px - 20px);
-  max-height: 100vh;
-  display: none;
-  margin: 0 auto;
-  padding: 20px;
-  overflow-y: auto;
+  height: 100%;
   border-radius: 20px 20px 0 0;
+  overflow-y: auto;
   color: #e6e9f1;
   font-size: 1.2rem;
   opacity: 0;
-  transform: translateY(100%);
+  display: none;
+  transform-origin: center;
+}
+
+/* Active panel with slide up animation */
+.expanded-panel.active {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: slideUp 0.4s ease forwards;
   position: relative;
 }
 
-.expanded-panel.active {
-  display: block;
-  animation: slideUp 0.4s ease forwards;
-}
-
+/* Closing panel with slide down animation */
 .expanded-panel.closing {
   animation: slideDown 0.4s ease forwards;
+  position: relative;
 }
 
 /* Panel Background Colors */
@@ -345,4 +318,38 @@ footer p {
   font-size: 0.9rem;
   color: #e6e9f1;
   font-weight: 300;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Fade Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
 }
