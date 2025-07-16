@@ -1,20 +1,61 @@
-// js/include.js
-
 document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menu-toggle');
-  const mobileOverlay = document.getElementById('mobileMenuOverlay');
   const leftBar = document.querySelector('.left-bar');
+  const circleWrapper = document.querySelector('.circle-wrapper');
+  const sideMenu = document.querySelector('.side-menu');
 
-  // Hamburger toggle
   menuToggle.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      mobileOverlay.classList.toggle('active');
-    } else {
-      leftBar.classList.toggle('expanded');
-    }
+    leftBar.classList.toggle('expanded');
+    circleWrapper.classList.toggle('expanded');
+    sideMenu.classList.toggle('expanded');
   });
 
-  // PDF modal logic
+  const buttons = document.querySelectorAll('.container');
+  const panels = document.querySelectorAll('.expanded-panel');
+  let currentPanel = null;
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const section = button.getAttribute('data-section');
+      const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
+
+      if (targetPanel === currentPanel) {
+        currentPanel.classList.remove('active');
+        currentPanel.classList.add('closing');
+        setTimeout(() => {
+          currentPanel.classList.remove('closing');
+          currentPanel.style.display = 'none';
+          currentPanel = null;
+        }, 400);
+        return;
+      }
+
+      if (currentPanel) {
+        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+        targetPanel.style.display = 'block';
+        targetPanel.style.opacity = 0;
+        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+
+        setTimeout(() => {
+          currentPanel.style.display = 'none';
+          currentPanel.style.animation = '';
+          currentPanel.classList.remove('active');
+
+          targetPanel.classList.add('active');
+          targetPanel.style.animation = '';
+          targetPanel.style.opacity = '';
+          currentPanel = targetPanel;
+        }, 300);
+      } else {
+        targetPanel.style.display = 'block';
+        requestAnimationFrame(() => {
+          targetPanel.classList.add('active');
+          currentPanel = targetPanel;
+        });
+      }
+    });
+  });
+
   const pdfModal = document.getElementById('pdfModal');
   const closeModal = document.getElementById('closeModal');
   const openPdfButton = document.getElementById('openPdfButton');
