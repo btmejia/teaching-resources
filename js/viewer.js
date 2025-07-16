@@ -1,55 +1,62 @@
 // viewer.js
 
 let pdfDoc = null;
-let pageNum = 1;
-let scale = 1.5; // initial zoom out a bit
-const canvas = document.getElementById('pdf-canvas');
-const ctx = canvas.getContext('2d');
+let scale = 1.5; // initial zoom scale
+const pdfContainer = document.getElementById('pdf-container');
 
-const pageInfo = document.getElementById('pageInfo');
-const prevPageBtn = document.getElementById('prevPage');
-const nextPageBtn = document.getElementById('nextPage');
 const zoomInBtn = document.getElementById('zoomIn');
 const zoomOutBtn = document.getElementById('zoomOut');
 
-function renderPage(num) {
-  pdfDoc.getPage(num).then(page => {
+function renderPage(pageNum) {
+  return pdfDoc.getPage(pageNum).then(page => {
     const viewport = page.getViewport({ scale: scale });
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
     canvas.height = viewport.height;
     canvas.width = viewport.width;
 
-    const renderContext = {
-      canvasContext: ctx,
-      viewport: viewport,
-    };
-    page.render(renderContext);
-
-    // Update page info display
-    pageInfo.textContent = `Page ${num} / ${pdfDoc.numPages}`;
-
-    // Enable/disable buttons
-    prevPageBtn.disabled = (num <= 1);
-    nextPageBtn.disabled = (num >= pdfDoc.numPages);
+    // Render PDF page into canvas context
+    return page.render({ canvasContext: ctx, viewport: viewport }).promise.then(() => {
+      return canvas;
+    });
   });
 }
 
-function queueRenderPage(num) {
-  if (num < 1 || num > pdfDoc.numPages) return;
-  pageNum = num;
-  renderPage(pageNum);
+function renderAllPages() {
+  pdfContainer.innerHTML = ''; // Clear previous canvases
+
+  const renderPromises = [];
+  for (let i = 1; i <= pdfDoc.numPages; i++) {
+    renderPromises.push(renderPage(i));
+  }
+
+  Promise.all(renderPromises).then(canvases => {
+    canvases.forEach(canvas => {
+      pdfContainer.appendChild(canvas);
+    });
+  });
 }
 
 function loadPdf() {
   const url = 'docs/Bartering-Real-World-Examples.pdf';
-
   pdfjsLib.getDocument(url).promise.then(pdf => {
     pdfDoc = pdf;
-    pageNum = 1;
-    renderPage(pageNum);
+    renderAllPages();
   });
 }
 
-// Event Listeners
+// Zoom handlers
+zoomInBtn.addEventListener('click', () => {
+  scale = Math.min(scale + 0.25, 4); // max 4x zoom
+  renderAllPages();
+});
+
+zoomOutBtn.addEventListener('click', () => {
+  scale = Math.max(scale - 0.25, 0.5); // min 0.5x zoom
+  renderAllPages();
+});
+
+// Open and close modal
 document.getElementById('openPdfButton').addEventListener('click', () => {
   document.getElementById('pdfModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -59,26 +66,23 @@ document.getElementById('openPdfButton').addEventListener('click', () => {
 document.getElementById('closeModal').addEventListener('click', () => {
   document.getElementById('pdfModal').classList.remove('active');
   document.body.style.overflow = '';
+  pdfContainer.innerHTML = '';
 });
 
-// Navigation
-prevPageBtn.addEventListener('click', () => {
-  if (pageNum <= 1) return;
-  queueRenderPage(pageNum - 1);
+// Close modal on clicking outside modal content
+document.getElementById('pdfModal').addEventListener('click', e => {
+  if (e.target.id === 'pdfModal') {
+    document.getElementById('pdfModal').classList.remove('active');
+    document.body.style.overflow = '';
+    pdfContainer.innerHTML = '';
+  }
 });
 
-nextPageBtn.addEventListener('click', () => {
-  if (pageNum >= pdfDoc.numPages) return;
-  queueRenderPage(pageNum + 1);
-});
-
-// Zoom
-zoomInBtn.addEventListener('click', () => {
-  scale += 0.25;
-  renderPage(pageNum);
-});
-
-zoomOutBtn.addEventListener('click', () => {
-  scale = Math.max(0.25, scale - 0.25);
-  renderPage(pageNum);
+// Close modal on ESC key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('pdfModal').classList.contains('active')) {
+    document.getElementById('pdfModal').classList.remove('active');
+    document.body.style.overflow = '';
+    pdfContainer.innerHTML = '';
+  }
 });
