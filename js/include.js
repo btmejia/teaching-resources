@@ -1,49 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Sidebar toggle elements
   const menuToggle = document.getElementById('menu-toggle');
   const leftBar = document.querySelector('.left-bar');
   const circleWrapper = document.querySelector('.circle-wrapper');
   const sideMenu = document.querySelector('.side-menu');
 
-  // Mobile sidebar overlay elements
   const mobileSidebarOverlay = document.getElementById('mobileSidebarOverlay');
   const mobileSidebarClose = document.getElementById('mobileSidebarClose');
 
-  // Desktop sidebar toggle and mobile overlay toggle
   menuToggle.addEventListener('click', () => {
     if (window.innerWidth <= 768) {
-      // On mobile: open overlay and hide hamburger
+      // Show overlay
       mobileSidebarOverlay.classList.add('active');
       mobileSidebarOverlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      circleWrapper.style.display = 'none';  // hide hamburger circle
+
+      // Hide hamburger circle button completely
+      circleWrapper.classList.add('hidden');
     } else {
-      // On desktop: toggle sidebar expansion
+      // Desktop toggle
       leftBar.classList.toggle('expanded');
       circleWrapper.classList.toggle('expanded');
       sideMenu.classList.toggle('expanded');
     }
   });
 
-  // Close button in mobile sidebar overlay
   mobileSidebarClose.addEventListener('click', () => {
     mobileSidebarOverlay.classList.remove('active');
     mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    circleWrapper.style.display = 'flex'; // show hamburger circle again
+
+    // Show hamburger circle again
+    circleWrapper.classList.remove('hidden');
   });
 
-  // Close overlay if clicking outside menu links
   mobileSidebarOverlay.addEventListener('click', (e) => {
     if (e.target === mobileSidebarOverlay) {
       mobileSidebarOverlay.classList.remove('active');
       mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      circleWrapper.style.display = 'flex';
+      circleWrapper.classList.remove('hidden');
     }
   });
 
-  // Your existing colored button panel toggle logic (if any)
+  // Colored button panel toggle (your existing code)
   const buttons = document.querySelectorAll('.container');
   let currentPanel = null;
 
