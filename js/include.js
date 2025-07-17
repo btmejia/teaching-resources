@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
 
       if (targetPanel === currentPanel) {
+        // Close current panel
         currentPanel.classList.remove('active');
         currentPanel.classList.add('closing');
         setTimeout(() => {
@@ -64,22 +65,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (currentPanel) {
-        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
-        targetPanel.style.display = 'block';
-        targetPanel.style.opacity = 0;
-        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+        if (window.innerWidth <= 768) {
+          // Mobile fade-over effect: new fades in above old, old fades out underneath
+          targetPanel.style.display = 'block';
+          targetPanel.style.opacity = 0;
+          targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+          targetPanel.style.zIndex = 2; // On top
 
-        setTimeout(() => {
-          currentPanel.style.display = 'none';
-          currentPanel.style.animation = '';
-          currentPanel.classList.remove('active');
+          currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+          currentPanel.style.zIndex = 1; // Underneath
 
-          targetPanel.classList.add('active');
-          targetPanel.style.animation = '';
-          targetPanel.style.opacity = '';
-          currentPanel = targetPanel;
-        }, 300);
+          setTimeout(() => {
+            currentPanel.style.display = 'none';
+            currentPanel.style.animation = '';
+            currentPanel.style.zIndex = '';
+            currentPanel.classList.remove('active');
+
+            targetPanel.classList.add('active');
+            targetPanel.style.animation = '';
+            targetPanel.style.opacity = '';
+            targetPanel.style.zIndex = '';
+            currentPanel = targetPanel;
+          }, 300);
+        } else {
+          // On desktop: slide + fade animations as before
+          currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+
+          targetPanel.style.display = 'block';
+          targetPanel.style.opacity = 0;
+          targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+
+          setTimeout(() => {
+            currentPanel.style.display = 'none';
+            currentPanel.style.animation = '';
+            currentPanel.classList.remove('active');
+
+            targetPanel.classList.add('active');
+            targetPanel.style.animation = '';
+            targetPanel.style.opacity = '';
+            currentPanel = targetPanel;
+          }, 300);
+        }
       } else {
+        // No panel open: just show target panel
         targetPanel.style.display = 'block';
         requestAnimationFrame(() => {
           targetPanel.classList.add('active');
