@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Your existing colored button panel toggle logic (if any)
+  // Colored button panel toggle logic
   const buttons = document.querySelectorAll('.container');
   let currentPanel = null;
 
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
 
       if (targetPanel === currentPanel) {
+        // Close current panel
         currentPanel.classList.remove('active');
         currentPanel.classList.add('closing');
         setTimeout(() => {
@@ -64,22 +65,45 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       if (currentPanel) {
-        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
-        targetPanel.style.display = 'block';
-        targetPanel.style.opacity = 0;
-        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+        if (window.innerWidth <= 768) {
+          // On mobile: fade out current, fade in target panel (no slide)
+          currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
 
-        setTimeout(() => {
-          currentPanel.style.display = 'none';
-          currentPanel.style.animation = '';
-          currentPanel.classList.remove('active');
+          targetPanel.style.display = 'block';
+          targetPanel.style.opacity = 0;
+          targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
 
-          targetPanel.classList.add('active');
-          targetPanel.style.animation = '';
-          targetPanel.style.opacity = '';
-          currentPanel = targetPanel;
-        }, 300);
+          setTimeout(() => {
+            currentPanel.style.display = 'none';
+            currentPanel.style.animation = '';
+            currentPanel.classList.remove('active');
+
+            targetPanel.classList.add('active');
+            targetPanel.style.animation = '';
+            targetPanel.style.opacity = '';
+            currentPanel = targetPanel;
+          }, 300);
+        } else {
+          // On desktop: slide + fade animations as before
+          currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+
+          targetPanel.style.display = 'block';
+          targetPanel.style.opacity = 0;
+          targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+
+          setTimeout(() => {
+            currentPanel.style.display = 'none';
+            currentPanel.style.animation = '';
+            currentPanel.classList.remove('active');
+
+            targetPanel.classList.add('active');
+            targetPanel.style.animation = '';
+            targetPanel.style.opacity = '';
+            currentPanel = targetPanel;
+          }, 300);
+        }
       } else {
+        // No panel open: just show target panel
         targetPanel.style.display = 'block';
         requestAnimationFrame(() => {
           targetPanel.classList.add('active');
