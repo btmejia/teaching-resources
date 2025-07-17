@@ -443,10 +443,17 @@ footer p {
 
   /* Responsive adjustment for expanded panels */
   .expanded-panel {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     width: 90vw !important;
-    height: auto !important;
-    max-height: 70vh !important;
-    border-radius: 15px !important;
-    margin: 10px auto !important;
+    height: 60vh !important;
+    max-height: 60vh !important;
+    border-radius: 15px 15px 0 0 !important;
+    margin: 0 !important;
+    overflow-y: auto !important;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
   }
 }
