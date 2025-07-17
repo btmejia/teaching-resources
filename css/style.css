@@ -319,10 +319,13 @@ body {
   top: 10px;
   right: 15px;
   font-size: 2rem;
-  color: #fff;
+  color: #e6e9f1;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
 }
 
 #pdfContainer {
@@ -388,22 +391,33 @@ footer p {
     display: none !important;
   }
 
-  /* Overlay for mobile sidebar */
+  /* Overlay for mobile sidebar with slide-in from left */
   .mobile-sidebar-overlay {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background-color: #13141b;
     z-index: 10000;
-    display: none;
+    display: flex;
     flex-direction: column;
     padding-top: 60px;
     color: #e6e9f1;
+
+    /* Start off-screen left */
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+
+    /* Animate transform and opacity */
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
   .mobile-sidebar-overlay.active {
-    display: flex;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .mobile-sidebar-overlay .side-menu {
@@ -413,6 +427,7 @@ footer p {
     padding-left: 40px !important;
     font-size: 1.5rem !important;
     color: #e6e9f1 !important;
+
     opacity: 1 !important;
     transform: translateX(0) !important;
     pointer-events: auto !important;
@@ -430,7 +445,7 @@ footer p {
     padding: 6px 10px;
   }
 
-  /* ✅ Fixed close button (X) */
+  /* Close button inside overlay */
   .mobile-sidebar-close {
     position: fixed;
     top: 15px;
@@ -440,11 +455,17 @@ footer p {
     cursor: pointer;
     user-select: none;
     z-index: 10001;
-    background: none !important;
+
+    /* Remove white background/box around X */
+    background: none;
     border: none;
-    outline: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    line-height: 1;
   }
 
+  /* Expanded panel container as fixed bottom flexbox */
   .expanded-panels {
     position: fixed !important;
     bottom: 0 !important;
@@ -454,6 +475,7 @@ footer p {
     z-index: 9999;
   }
 
+  /* Expanded panel itself positioned relatively, no horizontal transform */
   .expanded-panel {
     position: relative !important;
     bottom: auto !important;
@@ -468,6 +490,7 @@ footer p {
     box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
   }
 
+  /* HEADER - Shrink height and reduce margin to move up */
   .header {
     height: auto;
     margin: 10px 0 5px 0;
@@ -479,6 +502,7 @@ footer p {
     text-align: center;
   }
 
+  /* Increase subtitle and title font sizes */
   .subtitle {
     font-size: clamp(1.8rem, 7vw, 3rem);
     margin-bottom: 5px;
@@ -490,6 +514,7 @@ footer p {
     margin-bottom: 10px;
   }
 
+  /* Colored buttons moved up and tightly stacked below header */
   .container-wrapper {
     justify-content: center;
     margin-top: 0;
