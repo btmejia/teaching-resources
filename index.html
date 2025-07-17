@@ -11,12 +11,12 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
 
-  <!-- PDFObject library (if needed for your PDFs) -->
+  <!-- PDFObject library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
 </head>
 <body>
 
-  <!-- Sidebar (Desktop) -->
+  <!-- Sidebar -->
   <div class="left-bar">
     <div class="side-menu">
       <a href="index.html">Teaching Resources</a>
@@ -24,19 +24,19 @@
     </div>
   </div>
 
-  <!-- Hamburger circle button -->
-  <div class="circle-wrapper">
-    <div class="circle-button" id="menu-toggle" aria-label="Toggle menu">
-      <span class="menu-toggle">&#9776;</span>
-    </div>
+  <!-- Mobile sidebar overlay -->
+  <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <button id="mobileSidebarClose" class="mobile-sidebar-close" aria-label="Close Menu">&times;</button>
+    <nav class="side-menu" role="menu">
+      <a href="index.html" role="menuitem" tabindex="0">Teaching Resources</a>
+      <a href="about.html" role="menuitem" tabindex="0">About</a>
+    </nav>
   </div>
 
-  <!-- Mobile Sidebar Overlay -->
-  <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay" aria-hidden="true">
-    <div class="mobile-sidebar-close" id="mobileSidebarClose" aria-label="Close Menu">&times;</div>
-    <div class="side-menu">
-      <a href="index.html">Teaching Resources</a>
-      <a href="about.html">About</a>
+  <!-- Hamburger circle button -->
+  <div class="circle-wrapper">
+    <div class="circle-button" id="menu-toggle">
+      <span class="menu-toggle">&#9776;</span>
     </div>
   </div>
 
@@ -78,7 +78,7 @@
     </div>
   </div>
 
-  <!-- Modal Popup for PDF -->
+  <!-- Modal Popup -->
   <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button id="closeModal" aria-label="Close PDF preview">&times;</button>
@@ -86,9 +86,9 @@
     </div>
   </div>
 
-  <!-- Your JS files -->
-  <script src="js/viewer.js"></script>
+  <!-- Scripts -->
   <script src="js/include.js"></script>
+  <script src="js/viewer.js"></script>
 
 </body>
 </html>
