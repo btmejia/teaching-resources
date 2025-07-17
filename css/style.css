@@ -352,7 +352,7 @@ footer p {
     display: none !important;
   }
 
-  /* Hamburger button styles - keep circle shape */
+  /* Hamburger button styles */
   .circle-wrapper {
     position: fixed;
     top: 15px;
@@ -411,7 +411,6 @@ footer p {
     font-size: 1.5rem !important;
     color: #e6e9f1 !important;
 
-    /* OVERRIDE desktop side-menu styles */
     opacity: 1 !important;
     transform: translateX(0) !important;
     pointer-events: auto !important;
@@ -441,7 +440,7 @@ footer p {
     z-index: 10001;
   }
 
-  /* Responsive adjustment for expanded panels */
+  /* Expanded panel adjustments */
   .expanded-panel {
     position: fixed !important;
     bottom: 0 !important;
@@ -457,10 +456,10 @@ footer p {
     z-index: 9999;
   }
 
-  /* Adjusted header height and margin to move it up */
+  /* HEADER - Shrink height and reduce margin to move up */
   .header {
-    height: 30vh; /* less vertical space to push it up */
-    margin-top: 10vh; /* add some top margin so it doesn't stick to top */
+    height: auto;          /* let height be dynamic */
+    margin: 10px 0 5px 0;  /* small vertical margins */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -469,21 +468,23 @@ footer p {
     text-align: center;
   }
 
-  /* Slightly larger subtitle and title */
+  /* Increase subtitle and title font sizes */
   .subtitle {
-    font-size: clamp(1.2rem, 5vw, 2rem);
-    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    margin-bottom: 5px;
   }
 
   .site-title {
-    font-size: clamp(2rem, 7vw, 4rem);
+    font-size: clamp(3rem, 9vw, 5.5rem);
     white-space: normal;
+    margin-bottom: 10px;
   }
 
-  /* Move colored buttons up, closer to header */
+  /* Colored buttons moved up and tightly stacked below header */
   .container-wrapper {
     justify-content: center;
-    margin-top: 15px; /* less margin to header */
+    margin-top: 0;      /* remove top margin */
+    margin-bottom: 20px; /* some space below buttons */
     width: 100%;
     padding: 0 20px;
     gap: 20px;
@@ -491,6 +492,6 @@ footer p {
 
   .container {
     width: clamp(130px, 28vw, 260px);
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
   }
 }
