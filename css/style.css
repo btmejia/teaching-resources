@@ -355,11 +355,11 @@ footer p {
   /* Hamburger button styles */
   .circle-wrapper {
     position: fixed;
-    top: 55px;  /* moved further down */
+    top: 55px; /* moved down to avoid cutoff */
     left: 15px;
     width: 70px !important;
     height: 70px !important;
-    background-color: #13141b !important;
+    background-color: #13141b !important; /* dark background for inverted color */
     border-radius: 50% !important;
     z-index: 10001;
     display: flex !important;
@@ -371,7 +371,7 @@ footer p {
   .circle-button {
     width: 56px !important;
     height: 56px !important;
-    background-color: #f2f2fe !important;
+    background-color: #f2f2fe !important; /* light circle */
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
@@ -381,7 +381,7 @@ footer p {
 
   .menu-toggle {
     font-size: 2rem !important;
-    color: #13141b !important;
+    color: #13141b !important; /* dark color for hamburger icon */
   }
 
   /* Overlay for mobile sidebar */
@@ -428,7 +428,7 @@ footer p {
     padding: 6px 10px;
   }
 
-  /* Close button inside overlay - NO background or border */
+  /* Close button inside overlay - now just a text "×" with no white background */
   .mobile-sidebar-close {
     position: fixed;
     top: 15px;
