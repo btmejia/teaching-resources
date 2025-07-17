@@ -447,8 +447,8 @@ footer p {
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 90vw !important;
-    height: 60vh !important;
-    max-height: 60vh !important;
+    height: 45vh !important;       /* reduced height */
+    max-height: 45vh !important;   /* reduced max-height */
     border-radius: 15px 15px 0 0 !important;
     margin: 0 !important;
     overflow-y: auto !important;
@@ -458,8 +458,8 @@ footer p {
 
   /* HEADER - Shrink height and reduce margin to move up */
   .header {
-    height: auto;          /* let height be dynamic */
-    margin: 10px 0 5px 0;  /* small vertical margins */
+    height: auto;
+    margin: 10px 0 5px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -483,8 +483,8 @@ footer p {
   /* Colored buttons moved up and tightly stacked below header */
   .container-wrapper {
     justify-content: center;
-    margin-top: 0;      /* remove top margin */
-    margin-bottom: 20px; /* some space below buttons */
+    margin-top: 0;
+    margin-bottom: 20px;
     width: 100%;
     padding: 0 20px;
     gap: 20px;
