@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileSidebarOverlay.classList.add('active');
       mobileSidebarOverlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      circleWrapper.classList.add('hidden');  // hide hamburger
+      circleWrapper.style.display = 'none';  // hide hamburger circle
     } else {
       // On desktop: toggle sidebar expansion
       leftBar.classList.toggle('expanded');
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileSidebarOverlay.classList.remove('active');
     mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    circleWrapper.classList.remove('hidden'); // show hamburger again
+    circleWrapper.style.display = 'flex'; // show hamburger circle again
   });
 
   // Close overlay if clicking outside menu links
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileSidebarOverlay.classList.remove('active');
       mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      circleWrapper.classList.remove('hidden');
+      circleWrapper.style.display = 'flex';
     }
   });
 
