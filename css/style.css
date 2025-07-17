@@ -348,7 +348,7 @@ footer p {
 }
 
 /* MOBILE SIDEBAR NAVIGATION */
-@media (max-width: 975px) {
+@media (max-width: 1200px) {
   /* Hide fixed left sidebar */
   .left-bar {
     display: none !important;
