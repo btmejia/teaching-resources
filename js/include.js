@@ -1,90 +1,54 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Sidebar toggle elements
-  const menuToggle = document.getElementById('menu-toggle');
-  const leftBar = document.querySelector('.left-bar');
-  const circleWrapper = document.querySelector('.circle-wrapper');
-  const sideMenu = document.querySelector('.side-menu');
+document.addEventListener("DOMContentLoaded", () => {
+  // === Mobile Sidebar Toggle ===
+  const hamburger = document.querySelector(".hamburger");
+  const sidebar = document.querySelector(".sidebar");
+  const overlay = document.querySelector(".overlay");
+  const closeSidebar = document.querySelector(".close-sidebar");
 
-  // Mobile sidebar overlay elements
-  const mobileSidebarOverlay = document.getElementById('mobileSidebarOverlay');
-  const mobileSidebarClose = document.getElementById('mobileSidebarClose');
+  if (hamburger && sidebar && overlay && closeSidebar) {
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.add("open");
+      overlay.classList.add("active");
+    });
 
-  // Desktop sidebar toggle and mobile overlay toggle
-  menuToggle.addEventListener('click', () => {
-    if (window.innerWidth <= 768) {
-      // On mobile: open overlay and hide hamburger
-      mobileSidebarOverlay.classList.add('active');
-      mobileSidebarOverlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      circleWrapper.style.display = 'none';  // hide hamburger circle
-    } else {
-      // On desktop: toggle sidebar expansion
-      leftBar.classList.toggle('expanded');
-      circleWrapper.classList.toggle('expanded');
-      sideMenu.classList.toggle('expanded');
-    }
-  });
+    closeSidebar.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("active");
+    });
 
-  // Close button in mobile sidebar overlay
-  mobileSidebarClose.addEventListener('click', () => {
-    mobileSidebarOverlay.classList.remove('active');
-    mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    circleWrapper.style.display = 'flex'; // show hamburger circle again
-  });
+    overlay.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("active");
+    });
+  }
 
-  // Close overlay if clicking outside menu links
-  mobileSidebarOverlay.addEventListener('click', (e) => {
-    if (e.target === mobileSidebarOverlay) {
-      mobileSidebarOverlay.classList.remove('active');
-      mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      circleWrapper.style.display = 'flex';
-    }
-  });
+  // === Colored Button Panel Toggle ===
+  const panels = document.querySelectorAll(".expanded-panel");
+  const colorButtons = document.querySelectorAll(".color-section");
 
-  // Your existing colored button panel toggle logic (if any)
-  const buttons = document.querySelectorAll('.container');
-  let currentPanel = null;
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const targetPanel = document.getElementById(targetId);
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const section = button.getAttribute('data-section');
-      const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
+      panels.forEach((panel) => {
+        if (panel !== targetPanel) {
+          panel.classList.remove("active");
+          panel.style.pointerEvents = "none";
+          panel.style.opacity = "0";
+          panel.style.transition = "opacity 0.5s ease";
+        }
+      });
 
-      if (targetPanel === currentPanel) {
-        currentPanel.classList.remove('active');
-        currentPanel.classList.add('closing');
-        setTimeout(() => {
-          currentPanel.classList.remove('closing');
-          currentPanel.style.display = 'none';
-          currentPanel = null;
-        }, 400);
-        return;
-      }
-
-      if (currentPanel) {
-        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
-        targetPanel.style.display = 'block';
-        targetPanel.style.opacity = 0;
-        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
-
-        setTimeout(() => {
-          currentPanel.style.display = 'none';
-          currentPanel.style.animation = '';
-          currentPanel.classList.remove('active');
-
-          targetPanel.classList.add('active');
-          targetPanel.style.animation = '';
-          targetPanel.style.opacity = '';
-          currentPanel = targetPanel;
-        }, 300);
+      if (targetPanel.classList.contains("active")) {
+        targetPanel.classList.remove("active");
+        targetPanel.style.pointerEvents = "none";
+        targetPanel.style.opacity = "0";
       } else {
-        targetPanel.style.display = 'block';
-        requestAnimationFrame(() => {
-          targetPanel.classList.add('active');
-          currentPanel = targetPanel;
-        });
+        targetPanel.classList.add("active");
+        targetPanel.style.pointerEvents = "auto";
+        targetPanel.style.opacity = "1";
+        targetPanel.style.transition = "opacity 0.5s ease";
       }
     });
   });
