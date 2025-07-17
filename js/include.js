@@ -1,59 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Sidebar toggle
   const menuToggle = document.getElementById('menu-toggle');
   const leftBar = document.querySelector('.left-bar');
   const circleWrapper = document.querySelector('.circle-wrapper');
   const sideMenu = document.querySelector('.side-menu');
 
+  const mobileSidebarOverlay = document.getElementById('mobileSidebarOverlay');
+  const mobileSidebarClose = document.getElementById('mobileSidebarClose');
+
   menuToggle.addEventListener('click', () => {
-    leftBar.classList.toggle('expanded');
-    circleWrapper.classList.toggle('expanded');
-    sideMenu.classList.toggle('expanded');
+    if (window.innerWidth <= 768) {
+      // MOBILE: show full screen overlay
+      mobileSidebarOverlay.classList.add('active');
+      mobileSidebarOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    } else {
+      // DESKTOP: toggle sidebar width
+      leftBar.classList.toggle('expanded');
+      circleWrapper.classList.toggle('expanded');
+      sideMenu.classList.toggle('expanded');
+    }
   });
 
-  // Colored button panel toggle
-  const buttons = document.querySelectorAll('.container');
-  let currentPanel = null;
+  mobileSidebarClose.addEventListener('click', () => {
+    mobileSidebarOverlay.classList.remove('active');
+    mobileSidebarOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  });
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const section = button.getAttribute('data-section');
-      const targetPanel = document.querySelector(`.expanded-panel.${section}-panel`);
+  // Close overlay if clicking outside the menu area
+  mobileSidebarOverlay.addEventListener('click', e => {
+    if (e.target === mobileSidebarOverlay) {
+      mobileSidebarClose.click();
+    }
+  });
 
-      if (targetPanel === currentPanel) {
-        currentPanel.classList.remove('active');
-        currentPanel.classList.add('closing');
-        setTimeout(() => {
-          currentPanel.classList.remove('closing');
-          currentPanel.style.display = 'none';
-          currentPanel = null;
-        }, 400);
-        return;
-      }
-
-      if (currentPanel) {
-        currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
-        targetPanel.style.display = 'block';
-        targetPanel.style.opacity = 0;
-        targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
-
-        setTimeout(() => {
-          currentPanel.style.display = 'none';
-          currentPanel.style.animation = '';
-          currentPanel.classList.remove('active');
-
-          targetPanel.classList.add('active');
-          targetPanel.style.animation = '';
-          targetPanel.style.opacity = '';
-          currentPanel = targetPanel;
-        }, 300);
-      } else {
-        targetPanel.style.display = 'block';
-        requestAnimationFrame(() => {
-          targetPanel.classList.add('active');
-          currentPanel = targetPanel;
-        });
-      }
-    });
+  // Close overlay on Escape key press
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileSidebarOverlay.classList.contains('active')) {
+      mobileSidebarClose.click();
+    }
   });
 });
