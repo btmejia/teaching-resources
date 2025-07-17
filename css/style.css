@@ -326,6 +326,7 @@ body {
   padding: 0;
   margin: 0;
   border-radius: 0;
+  line-height: 1;
 }
 
 #pdfContainer {
@@ -357,7 +358,7 @@ footer p {
   /* Hamburger button styles */
   .circle-wrapper {
     position: fixed;
-    top: 35px !important;
+    top: 45px !important; /* moved down 10px */
     left: 15px;
     width: 70px !important;
     height: 70px !important;
@@ -488,6 +489,7 @@ footer p {
     margin: 0 !important;
     overflow-y: auto !important;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+    text-align: center !important; /* center content inside */
   }
 
   /* HEADER - Shrink height and reduce margin to move up */
@@ -527,18 +529,5 @@ footer p {
   .container {
     width: clamp(130px, 28vw, 260px);
     font-size: clamp(1rem, 2vw, 1.2rem);
-  }
-
-  /* Move subtitle and title down a bit when hamburger is black (mobile) */
-  .header {
-    margin-top: 30px;
-  }
-
-  .subtitle {
-    margin-top: 15px;
-  }
-
-  .site-title {
-    margin-top: 10px;
   }
 }
