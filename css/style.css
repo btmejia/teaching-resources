@@ -528,4 +528,17 @@ footer p {
     width: clamp(130px, 28vw, 260px);
     font-size: clamp(1rem, 2vw, 1.2rem);
   }
+
+  /* Move subtitle and title down a bit when hamburger is black (mobile) */
+  .header {
+    margin-top: 30px;
+  }
+
+  .subtitle {
+    margin-top: 15px;
+  }
+
+  .site-title {
+    margin-top: 10px;
+  }
 }
