@@ -134,6 +134,7 @@ body {
   flex-wrap: wrap;
 }
 
+/* Ensure buttons are clickable */
 .container {
   width: clamp(150px, 30vw, 300px);
   padding: clamp(10px, 2vw, 20px) clamp(15px, 3vw, 30px);
@@ -145,6 +146,9 @@ body {
   cursor: pointer;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
   user-select: none;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Section colors */
@@ -168,6 +172,7 @@ body {
   max-width: 100%;
 }
 
+/* Ensure panels are clickable */
 .expanded-panel {
   width: clamp(300px, 80vw, 960px);
   height: clamp(300px, 60vh, calc(100vh - 40px - 20px - 70px - 20px));
@@ -182,6 +187,8 @@ body {
   opacity: 0;
   transform: translateY(100%);
   position: relative;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 .expanded-panel.active {
@@ -320,7 +327,7 @@ footer p {
   /* Hamburger button styles - keep circle shape */
   .circle-wrapper {
     position: fixed;
-    top: 25px; /* moved down from 15px */
+    top: 40px; /* moved further down */
     left: 15px;
     width: 70px !important;
     height: 70px !important;
