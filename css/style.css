@@ -370,9 +370,9 @@ footer p {
     transition: none !important;
   }
 
-  /* Move hamburger down 10px when expanded */
   .circle-wrapper.expanded {
-    top: 45px !important;
+    left: 140px;
+    top: 55px !important; /* moved down */
   }
 
   .circle-button {
@@ -498,7 +498,7 @@ footer p {
   /* HEADER - Shrink height and reduce margin to move up */
   .header {
     height: auto;
-    margin: 10px 0 5px 0;
+    margin: 40px 0 5px 0 !important; /* moved down */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -532,10 +532,5 @@ footer p {
   .container {
     width: clamp(130px, 28vw, 260px);
     font-size: clamp(1rem, 2vw, 1.2rem);
-  }
-
-  /* Add extra top margin to header to separate from hamburger */
-  .header {
-    margin-top: 30px !important;
   }
 }
