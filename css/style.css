@@ -488,6 +488,14 @@ footer p {
     margin: 0 !important;
     overflow-y: auto !important;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+
+    /* Center content horizontally and vertically */
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px !important;
   }
 
   /* HEADER - Shrink height and reduce margin to move up */
