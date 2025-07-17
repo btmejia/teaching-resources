@@ -109,7 +109,7 @@ body {
 }
 
 .subtitle {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
   font-weight: 500;
   color: #13141b;
   margin-bottom: 12px;
@@ -117,7 +117,7 @@ body {
 }
 
 .site-title {
-  font-size: 6rem;
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   color: #13141b;
   white-space: nowrap;
@@ -128,16 +128,17 @@ body {
 .container-wrapper {
   display: flex;
   justify-content: center;
-  gap: 80px;
+  gap: clamp(20px, 5vw, 80px);
   margin: 20px auto 0;
   width: fit-content;
+  flex-wrap: wrap;
 }
 
 .container {
-  width: 300px;
-  padding: 20px 30px;
+  width: clamp(150px, 30vw, 300px);
+  padding: clamp(10px, 2vw, 20px) clamp(15px, 3vw, 30px);
   text-align: center;
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
   font-weight: 300;
   border-radius: 9999px;
   color: #e6e9f1;
@@ -146,6 +147,7 @@ body {
   user-select: none;
 }
 
+/* Section colors */
 .container.section1 {
   background-color: #d9534f;
 }
