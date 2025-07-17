@@ -14,7 +14,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Sidebar (desktop) */
+/* Sidebar */
 .left-bar {
   position: fixed;
   top: 0;
@@ -60,69 +60,46 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.side-menu a:hover,
-.side-menu a:focus {
+.side-menu a:hover {
   background-color: #2a2c3a;
-  outline: none;
 }
 
-/* Hamburger circle button */
+/* Hamburger */
 .circle-wrapper {
   position: fixed;
-  top: 10px;
+  top: 50%;
   left: 10px;
-  width: 50px;
-  height: 50px;
-  background-color: black; /* black circle background */
+  transform: translateY(-50%);
+  width: 90px;
+  height: 90px;
+  background-color: #13141b;
   border-radius: 50%;
-  z-index: 10001;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: left 0.3s ease;
+}
+
+.circle-wrapper.expanded {
+  left: 140px;
+}
+
+.circle-button {
+  width: 70px;
+  height: 70px;
+  background-color: #f2f2fe;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
 .menu-toggle {
-  font-size: 1.8rem;
-  color: white;
+  font-size: 2rem;
+  color: #13141b;
   user-select: none;
-}
-
-/* Hide hamburger button when mobile sidebar is active */
-.circle-wrapper.hidden {
-  display: none !important;
-}
-
-/* Mobile sidebar overlay */
-.mobile-sidebar-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-  z-index: 10000;
-}
-
-/* Show overlay */
-.mobile-sidebar-overlay.active {
-  display: flex;
-}
-
-/* Close button on overlay: simple white X without background */
-.mobile-sidebar-close {
-  font-size: 2.5rem;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-bottom: 20px;
-  align-self: flex-end;
 }
 
 /* Header */
@@ -363,4 +340,102 @@ footer p {
   font-size: 0.9rem;
   color: #e6e9f1;
   font-weight: 300;
+}
+
+/* MOBILE SIDEBAR NAVIGATION */
+
+@media (max-width: 768px) {
+  /* Hide fixed left sidebar */
+  .left-bar {
+    display: none !important;
+  }
+
+  /* Hamburger button styles - keep circle shape */
+  .circle-wrapper {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 70px !important;
+    height: 70px !important;
+    background-color: #13141b !important;
+    border-radius: 50% !important;
+    z-index: 10001;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: none !important;
+  }
+
+  .circle-button {
+    width: 56px !important;
+    height: 56px !important;
+    background-color: #f2f2fe !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer;
+  }
+
+  .menu-toggle {
+    font-size: 2rem !important;
+    color: #13141b !important;
+  }
+
+  /* Overlay for mobile sidebar */
+  .mobile-sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #13141b;
+    z-index: 10000;
+    display: none;
+    flex-direction: column;
+    padding-top: 60px; /* space for close button */
+    color: #e6e9f1;
+  }
+
+  .mobile-sidebar-overlay.active {
+    display: flex;
+  }
+
+  /* Sidebar menu inside overlay */
+  .mobile-sidebar-overlay .side-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding-left: 40px !important;
+    font-size: 1.5rem !important;
+    color: #e6e9f1 !important;
+
+    /* OVERRIDE desktop side-menu styles */
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+  }
+
+  .mobile-sidebar-overlay .side-menu a {
+    color: #e6e9f1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .mobile-sidebar-overlay .side-menu a:hover {
+    background-color: #2a2c3a;
+    border-radius: 4px;
+    padding: 6px 10px;
+  }
+
+  /* Close button inside overlay */
+  .mobile-sidebar-close {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: #e6e9f1;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10001;
+  }
 }
