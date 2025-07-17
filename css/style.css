@@ -355,7 +355,7 @@ footer p {
   /* Hamburger button styles */
   .circle-wrapper {
     position: fixed;
-    top: 35px !important; /* moved down from 15px */
+    top: 55px;  /* moved further down */
     left: 15px;
     width: 70px !important;
     height: 70px !important;
@@ -371,7 +371,7 @@ footer p {
   .circle-button {
     width: 56px !important;
     height: 56px !important;
-    background-color: #13141b !important; /* invert color: dark background */
+    background-color: #f2f2fe !important;
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
@@ -381,12 +381,7 @@ footer p {
 
   .menu-toggle {
     font-size: 2rem !important;
-    color: #f2f2fe !important; /* invert color: light icon */
-  }
-
-  /* Hide hamburger when overlay active */
-  .mobile-sidebar-overlay.active + .circle-wrapper {
-    display: none !important;
+    color: #13141b !important;
   }
 
   /* Overlay for mobile sidebar */
@@ -433,7 +428,7 @@ footer p {
     padding: 6px 10px;
   }
 
-  /* Close button inside overlay */
+  /* Close button inside overlay - NO background or border */
   .mobile-sidebar-close {
     position: fixed;
     top: 15px;
@@ -443,6 +438,11 @@ footer p {
     cursor: pointer;
     user-select: none;
     z-index: 10001;
+
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
   }
 
   /* Expanded panel container as fixed bottom flexbox */
