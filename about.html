@@ -81,9 +81,18 @@
     </div>
   </div>
 
+  <!-- Mobile Sidebar Overlay (hidden by default) -->
+  <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay" aria-hidden="true">
+    <button id="mobileSidebarClose" class="mobile-sidebar-close" aria-label="Close menu">&times;</button>
+    <nav class="side-menu">
+      <a href="index.html">Teaching Resources</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+
   <!-- Hamburger circle button -->
   <div class="circle-wrapper">
-    <div class="circle-button" id="menu-toggle">
+    <div class="circle-button" id="menu-toggle" role="button" tabindex="0" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileSidebarOverlay">
       <span class="menu-toggle">&#9776;</span>
     </div>
   </div>
