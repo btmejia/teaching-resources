@@ -66,21 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (currentPanel) {
         if (window.innerWidth <= 768) {
-          // On mobile: fade out current, fade in target panel (no slide)
-          currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
-
+          // Mobile fade-over effect: new fades in above old, old fades out underneath
           targetPanel.style.display = 'block';
           targetPanel.style.opacity = 0;
           targetPanel.style.animation = 'fadeIn 0.3s ease forwards';
+          targetPanel.style.zIndex = 2; // On top
+
+          currentPanel.style.animation = 'fadeOut 0.3s ease forwards';
+          currentPanel.style.zIndex = 1; // Underneath
 
           setTimeout(() => {
             currentPanel.style.display = 'none';
             currentPanel.style.animation = '';
+            currentPanel.style.zIndex = '';
             currentPanel.classList.remove('active');
 
             targetPanel.classList.add('active');
             targetPanel.style.animation = '';
             targetPanel.style.opacity = '';
+            targetPanel.style.zIndex = '';
             currentPanel = targetPanel;
           }, 300);
         } else {
