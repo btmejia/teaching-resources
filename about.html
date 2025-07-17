@@ -36,9 +36,9 @@
     /* Image box (portrait shape, taller) */
     .image-box {
       flex: 2;
-      background-color: #e6e9f1; /* light gray placeholder */
+      background-color: #e6e9f1;
       border-radius: 20px;
-      min-height: 450px; /* taller for portrait */
+      min-height: 450px;
     }
 
     /* Text box */
@@ -49,6 +49,25 @@
       color: #13141b;
       display: flex;
       align-items: center;
+    }
+
+    /* ✅ MOBILE FIX: Stack layout vertically on small screens */
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .image-box {
+        width: 100%;
+        min-height: 300px;
+      }
+
+      .text-box {
+        font-size: 1rem;
+        padding: 20px 0;
+      }
     }
   </style>
 </head>
