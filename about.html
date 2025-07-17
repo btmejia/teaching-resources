@@ -12,8 +12,6 @@
   />
 
   <style>
-    /* About Page Specific Styles */
-
     /* Make About title same size as main page title */
     header h1 {
       font-size: 6rem;
@@ -25,6 +23,7 @@
       margin-bottom: 40px;
     }
 
+    /* Container for image + text side by side */
     main {
       display: flex;
       max-width: 900px;
@@ -34,33 +33,46 @@
       font-family: 'Inter', sans-serif;
     }
 
+    /* Image box (portrait shape, taller) */
     .image-box {
       flex: 2;
       background-color: #e6e9f1;
       border-radius: 20px;
-      overflow: hidden;
       min-height: 450px;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
     }
 
     .image-box img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       border-radius: 20px;
+      object-fit: cover;
     }
 
+    /* Text box */
     .text-box {
       flex: 1;
       font-weight: 300;
       font-size: 1.2rem;
       color: #13141b;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
     }
 
+    /* New styling for name heading */
+    .text-box h2 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #13141b;
+      margin-bottom: 12px;
+      user-select: none;
+    }
+
+    /* ✅ MOBILE FIX: Stack layout vertically on small screens */
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -104,13 +116,18 @@
 
   <main>
     <div class="image-box">
-      <img src="docs/Billy-Office-Photo.jpeg" alt="Billy Office Photo">
+      <img src="docs/Billy-Office-Photo.jpeg" alt="Billy Mejia Office Photo" />
     </div>
     <div class="text-box">
-      <p>Welcome to the About page! Here you can add information about your teaching resources, background, or anything else you want visitors to know.</p>
+      <h2>Billy Mejia</h2>
+      <p>
+        I am a passionate and dedicated educator with a strong commitment to fostering a positive learning environment where all students can thrive. With years of experience in curriculum development, student engagement, and differentiated instruction, I strive to inspire curiosity and critical thinking in every classroom. I believe in empowering students with the skills and confidence they need to succeed both academically and personally.
+      </p>
     </div>
   </main>
 
+  <!-- Include sidebar toggle script -->
   <script src="js/include.js"></script>
+
 </body>
 </html>
