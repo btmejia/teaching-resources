@@ -440,20 +440,29 @@ footer p {
     z-index: 10001;
   }
 
-  /* Expanded panel adjustments */
-  .expanded-panel {
+  /* Expanded panel container as fixed bottom flexbox */
+  .expanded-panels {
     position: fixed !important;
     bottom: 0 !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    width: 100vw !important;
+    display: flex !important;
+    justify-content: center !important;
+    z-index: 9999;
+  }
+
+  /* Expanded panel itself positioned relatively, no horizontal transform */
+  .expanded-panel {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
     width: 90vw !important;
-    height: 45vh !important;       /* reduced height */
-    max-height: 45vh !important;   /* reduced max-height */
+    height: 45vh !important;
+    max-height: 45vh !important;
     border-radius: 15px 15px 0 0 !important;
     margin: 0 !important;
     overflow-y: auto !important;
     box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
-    z-index: 9999;
   }
 
   /* HEADER - Shrink height and reduce margin to move up */
