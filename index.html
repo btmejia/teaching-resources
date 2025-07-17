@@ -2,34 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Sections</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My GitHub Page</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <!-- PDFObject library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.7/pdfobject.min.js"></script>
 </head>
 <body>
-  <header>
-    <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- Sidebar -->
+  <div class="left-bar">
+    <div class="side-menu">
+      <a href="index.html">Teaching Resources</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+
+  <!-- Mobile sidebar overlay -->
+  <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <button id="mobileSidebarClose" class="mobile-sidebar-close" aria-label="Close Menu">&times;</button>
+    <nav class="side-menu" role="menu">
+      <a href="index.html" role="menuitem" tabindex="0">Teaching Resources</a>
+      <a href="about.html" role="menuitem" tabindex="0">About</a>
+    </nav>
+  </div>
+
+  <!-- Hamburger circle button -->
+  <div class="circle-wrapper">
+    <div class="circle-button" id="menu-toggle">
+      <span class="menu-toggle">&#9776;</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="subtitle">Billy Mejia's</div>
+    <h1 class="site-title">Teaching Resources</h1>
   </header>
 
-  <main>
-    <div class="container">
-      <div class="title">Welcome</div>
-      <div class="color-section red" data-target="red-panel">Red Section</div>
-      <div class="color-section blue" data-target="blue-panel">Blue Section</div>
-      <div class="color-section green" data-target="green-panel">Green Section</div>
+  <!-- Colored Buttons -->
+  <div class="container-wrapper">
+    <div class="container section1" data-section="section1">Student Assignments</div>
+    <div class="container section2" data-section="section2">Student Exams</div>
+    <div class="container section3" data-section="section3">Classroom Materials</div>
+  </div>
+
+  <!-- Expanded Panels -->
+  <div class="expanded-panels">
+    <!-- Red Panel: Student Assignments -->
+    <div class="expanded-panel section1-panel">
+      <div class="assignment-card">
+        <button class="open-pdf-btn" id="openPdfButton" aria-label="Open PDF preview">
+          <i class="fas fa-magnifying-glass"></i>
+        </button>
+        <h3 class="assignment-title">Bartering Real World Examples</h3>
+      </div>
     </div>
 
-    <div class="expanded-panel red-panel" id="red-panel">
-      <p>This is the red panel content.</p>
+    <!-- Blue Panel -->
+    <div class="expanded-panel section2-panel">
+      <h2>Section 2 Content</h2>
+      <p>Put your section 2 content here.</p>
     </div>
-    <div class="expanded-panel blue-panel" id="blue-panel">
-      <p>This is the blue panel content.</p>
-    </div>
-    <div class="expanded-panel green-panel" id="green-panel">
-      <p>This is the green panel content.</p>
-    </div>
-  </main>
 
-  <script src="script.js"></script>
+    <!-- Green Panel -->
+    <div class="expanded-panel section3-panel">
+      <h2>Section 3 Content</h2>
+      <p>Put your section 3 content here.</p>
+    </div>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="pdfModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <button id="closeModal" aria-label="Close PDF preview">&times;</button>
+      <div id="pdfContainer" style="height: 80vh; width: 100%;"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/include.js"></script>
+  <script src="js/viewer.js"></script>
+
 </body>
 </html>
