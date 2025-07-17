@@ -352,7 +352,7 @@ footer p {
     display: none !important;
   }
 
-  /* Hamburger button styles */
+  /* Hamburger button styles - keep circle shape */
   .circle-wrapper {
     position: fixed;
     top: 15px;
@@ -411,6 +411,7 @@ footer p {
     font-size: 1.5rem !important;
     color: #e6e9f1 !important;
 
+    /* OVERRIDE desktop side-menu styles */
     opacity: 1 !important;
     transform: translateX(0) !important;
     pointer-events: auto !important;
@@ -440,67 +441,41 @@ footer p {
     z-index: 10001;
   }
 
-  /* Expanded panel container as fixed bottom flexbox */
-  .expanded-panels {
-    position: fixed !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    display: flex !important;
-    justify-content: center !important;
-    z-index: 9999;
-  }
+  /* ========== MOBILE PANEL OVERRIDES TO DISABLE SLIDING ========== */
 
-  /* Expanded panel itself positioned relatively, no horizontal transform */
   .expanded-panel {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
+    position: fixed !important;
+    top: 70px; /* adjust if header height changes */
+    left: 5vw;
+    right: 5vw;
+    bottom: 0;
     width: 90vw !important;
-    height: 45vh !important;
-    max-height: 45vh !important;
-    border-radius: 15px 15px 0 0 !important;
-    margin: 0 !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    max-height: calc(100vh - 70px) !important;
+    margin: 0 auto !important;
+    border-radius: 20px 20px 0 0 !important;
+
+    transform: none !important;
+    opacity: 0;
+    transition: opacity 0.3s ease !important;
+
+    display: none !important;
     overflow-y: auto !important;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
+
+    /* Remove previous animation */
+    animation: none !important;
   }
 
-  /* HEADER - Shrink height and reduce margin to move up */
-  .header {
-    height: auto;
-    margin: 10px 0 5px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    text-align: center;
+  .expanded-panel.active {
+    display: block !important;
+    opacity: 1 !important;
+    animation: none !important;
   }
 
-  /* Increase subtitle and title font sizes */
-  .subtitle {
-    font-size: clamp(1.8rem, 7vw, 3rem);
-    margin-bottom: 5px;
-  }
-
-  .site-title {
-    font-size: clamp(3rem, 9vw, 5.5rem);
-    white-space: normal;
-    margin-bottom: 10px;
-  }
-
-  /* Colored buttons moved up and tightly stacked below header */
-  .container-wrapper {
-    justify-content: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    width: 100%;
-    padding: 0 20px;
-    gap: 20px;
-  }
-
-  .container {
-    width: clamp(130px, 28vw, 260px);
-    font-size: clamp(1rem, 2vw, 1.2rem);
+  .expanded-panel.closing {
+    display: block !important;
+    opacity: 0 !important;
+    animation: none !important;
   }
 }
