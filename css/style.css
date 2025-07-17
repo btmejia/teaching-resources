@@ -388,6 +388,7 @@ footer p {
     display: none;
     flex-direction: column;
     padding-top: 60px; /* space for close button */
+    color: #e6e9f1;
   }
 
   .mobile-sidebar-overlay.active {
@@ -396,14 +397,29 @@ footer p {
 
   /* Sidebar menu inside overlay */
   .mobile-sidebar-overlay .side-menu {
-    flex-direction: column;
-    gap: 30px;
-    padding-left: 40px;
-    font-size: 1.5rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding-left: 40px !important;
+    font-size: 1.5rem !important;
+    color: #e6e9f1 !important;
+
+    /* OVERRIDE desktop side-menu styles */
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
   }
 
   .mobile-sidebar-overlay .side-menu a {
     color: #e6e9f1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .mobile-sidebar-overlay .side-menu a:hover {
+    background-color: #2a2c3a;
+    border-radius: 4px;
+    padding: 6px 10px;
   }
 
   /* Close button inside overlay */
@@ -415,5 +431,6 @@ footer p {
     color: #e6e9f1;
     cursor: pointer;
     user-select: none;
+    z-index: 10001;
   }
 }
