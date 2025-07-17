@@ -160,7 +160,7 @@ body {
   background-color: #5cb85c;
 }
 
-/* Expanded Panels Container */
+/* Expanded Panels Container & Panels */
 .expanded-panels {
   position: relative;
   margin: 20px auto 0;
@@ -168,44 +168,9 @@ body {
   max-width: 100%;
 }
 
-/* Panel Animations */
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-}
-
-/* Fade Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: none; }
-  to { opacity: 1; transform: none; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; transform: none; }
-  to { opacity: 0; transform: none; }
-}
-
-/* Panel Styles */
 .expanded-panel {
-  width: 960px;
-  height: calc(100vh - 40px - 20px - 70px - 20px);
+  width: clamp(300px, 80vw, 960px);
+  height: clamp(300px, 60vh, calc(100vh - 40px - 20px - 70px - 20px));
   max-height: 100vh;
   display: none;
   margin: 0 auto;
@@ -355,7 +320,7 @@ footer p {
   /* Hamburger button styles - keep circle shape */
   .circle-wrapper {
     position: fixed;
-    top: 15px;
+    top: 25px; /* moved down from 15px */
     left: 15px;
     width: 70px !important;
     height: 70px !important;
