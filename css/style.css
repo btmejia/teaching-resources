@@ -355,12 +355,11 @@ footer p {
   /* Hamburger button styles */
   .circle-wrapper {
     position: fixed;
-    /* Changed from 15px to 60px to move it further down */
-    top: 60px;
+    top: 60px; /* moved down so not cut off */
     left: 15px;
     width: 70px !important;
     height: 70px !important;
-    background-color: #13141b !important;
+    background-color: #13141b !important; /* dark background */
     border-radius: 50% !important;
     z-index: 10001;
     display: flex !important;
@@ -372,7 +371,7 @@ footer p {
   .circle-button {
     width: 56px !important;
     height: 56px !important;
-    background-color: #f2f2fe !important;
+    background-color: #13141b !important; /* dark inside */
     border-radius: 50% !important;
     display: flex !important;
     align-items: center !important;
@@ -382,7 +381,7 @@ footer p {
 
   .menu-toggle {
     font-size: 2rem !important;
-    color: #13141b !important;
+    color: #f2f2fe !important; /* light hamburger icon */
   }
 
   /* Overlay for mobile sidebar */
