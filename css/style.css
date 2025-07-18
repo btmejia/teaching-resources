@@ -241,21 +241,32 @@ body {
   background-color: #5cb85c;
 }
 
-/* Assignment card – pill layout, top-left aligned */
-.assignment-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px 16px;
-  border-radius: 9999px;
+/* Assignments wrapper - new flex container for cards */
+.assignments-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* space between cards */
+  justify-content: center;
+  padding-top: 50px; /* space from top */
+  position: relative;
+}
+
+/* Assignment card */
+.expanded-panel .assignment-card {
+  position: static; /* override previous absolute */
   max-width: 260px;
-  margin: 0;
-  color: #fff;
+  width: 100%;
+  padding: 10px 16px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   gap: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  color: #fff;
   font-size: 0.95rem;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  cursor: pointer;
+  margin: 0;
 }
 
 /* Circular Open PDF Button with icon */
@@ -434,172 +445,47 @@ footer p {
   }
 
   .mobile-sidebar-overlay .side-menu a {
-    color: #e6e9f1;
-    text-decoration: none;
-    cursor: pointer;
+    color: #e6e9f1 !important;
   }
 
-  .mobile-sidebar-overlay .side-menu a:hover {
-    background-color: #2a2c3a;
-    border-radius: 4px;
-    padding: 6px 10px;
-  }
-
-  /* Close button inside overlay */
   .mobile-sidebar-close {
-    position: fixed;
+    position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 2.5rem;
-    color: #e6e9f1;
-    cursor: pointer;
-    user-select: none;
-    z-index: 10001;
-
-    /* Remove white background/box around X */
     background: none;
     border: none;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    line-height: 1;
+    color: #e6e9f1;
+    font-size: 2.5rem;
+    cursor: pointer;
   }
 
-  /* Expanded panel container as fixed bottom flexbox */
-  .expanded-panels {
-    position: fixed !important;
-    bottom: 0 !important;
-    width: 100vw !important;
-    display: flex !important;
-    justify-content: center !important;
-    z-index: 9999;
-  }
-
-  /* Expanded panel itself positioned relatively, no horizontal transform */
+  /* Adjust expanded panels to fit smaller screens */
   .expanded-panel {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: 90vw !important;
-    height: 45vh !important;
-    max-height: 45vh !important;
-    border-radius: 15px 15px 0 0 !important;
-    margin: 0 !important;
-    overflow-y: auto !important;
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.3);
-  }
-
-  /* HEADER - Shrink height and reduce margin to move up */
-  .header {
-    height: auto;
-    margin: 10px 0 5px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    text-align: center;
-  }
-
-  /* Increase subtitle and title font sizes */
-  .subtitle {
-    font-size: clamp(1.8rem, 7vw, 3rem);
-    margin-bottom: 5px;
-  }
-
-  .site-title {
-    font-size: clamp(3rem, 9vw, 5.5rem);
-    white-space: normal;
-    margin-bottom: 10px;
-  }
-
-  /* Colored buttons moved up and tightly stacked below header */
-  .container-wrapper {
-    justify-content: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    width: 100%;
-    padding: 0 20px;
-    gap: 20px;
-  }
-
-  .container {
-    width: clamp(130px, 28vw, 260px);
-    font-size: clamp(1rem, 2vw, 1.2rem);
-  }
-
-  /* NEW: Center text inside expanded panels on mobile */
-  .expanded-panel {
-    text-align: center;
-  }
-
-  /* New styling for name heading */
-  .text-box h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: #13141b;
-    margin-bottom: 12px;
-    user-select: none;
+    width: 90vw;
+    height: 70vh;
   }
 }
 
-/* About page specific styles (can be outside media query) */
-/* Container for image + text side by side on desktop */
-main {
-  display: flex;
-  max-width: 900px;
-  margin: 0 auto;
-  gap: 40px;
-  padding: 0 20px;
-  font-family: 'Inter', sans-serif;
-}
-
-/* Image box (portrait shape, taller) */
-.image-box {
-  flex: 2;
-  background-color: #e6e9f1;
-  border-radius: 20px;
-  min-height: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.image-box img {
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  object-fit: cover;
-}
-
-/* Text box */
-.text-box {
-  flex: 1;
-  font-weight: 300;
-  font-size: 1.2rem;
-  color: #13141b;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* Responsive stacking for about page */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+/* Responsive for small devices */
+@media (max-width: 500px) {
+  .assignments-wrapper {
+    gap: 12px;
+    padding-top: 30px;
   }
 
-  .image-box {
-    width: 100%;
-    min-height: 300px;
+  .expanded-panel .assignment-card {
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 8px 10px;
   }
 
-  .text-box {
+  .open-pdf-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .assignment-title {
     font-size: 1rem;
-    padding: 20px 0;
   }
 }
