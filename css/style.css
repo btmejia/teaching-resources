@@ -114,21 +114,25 @@ body {
   color: #13141b;
   margin-bottom: 12px;
   user-select: none;
+  padding: 0 10px;
 }
 
 .site-title {
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   color: #13141b;
-  white-space: nowrap;
-  line-height: 1;
+  line-height: 1.1;
+  text-align: center;
+  word-break: break-word;
+  padding: 0 10px;
+  /* Removed white-space: nowrap to allow wrapping */
 }
 
 /* Pill Containers */
 .container-wrapper {
   display: flex;
   justify-content: center;
-  gap: clamp(5px, 1.5vw, 20px);
+  gap: clamp(5px, 1.5vw, 20px); /* Shrunk gap here */
   margin: 20px auto 0;
   width: fit-content;
   flex-wrap: wrap;
@@ -487,5 +491,20 @@ footer p {
 
   .assignment-title {
     font-size: 1rem;
+  }
+
+  /* Header adjustments on mobile */
+  .site-title {
+    font-size: 2rem;
+    padding: 0 10px;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    padding: 0 10px;
+  }
+
+  .header {
+    padding: 24px 10px;
   }
 }
