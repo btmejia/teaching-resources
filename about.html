@@ -5,26 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About - Teaching Resources</title>
 
-  <!-- Load Raleway font -->
-  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="css/style.css" />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
 
   <style>
-    /* Use Raleway for entire body */
-    body {
-      font-family: 'Raleway', sans-serif;
-      background-color: #f2f2fe;
-      font-weight: 300;
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: #13141b;
-    }
-
     /* Make About title same size as main page title */
     header h1 {
       font-size: 6rem;
@@ -42,28 +30,31 @@
       max-width: 900px;
       margin: 0 auto;
       gap: 40px;
-      padding: 0 10px; /* changed from 20px to 10px */
+      padding: 0 10px; /* updated left/right padding to 10px */
+      font-family: 'Raleway', sans-serif; /* Use Raleway font */
     }
 
-    /* Circular Image Box */
+    /* Image box (portrait shape, taller) */
     .image-box {
-      flex: 0 0 auto;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      overflow: hidden;
+      flex: 2;
+      background-color: #e6e9f1;
+      border-radius: 50%; /* circle */
+      min-height: 350px;
+      min-width: 350px;
+      max-width: 350px;
+      max-height: 350px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #e6e9f1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-top: 20px;
     }
 
     .image-box img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      border-radius: 50%;
       object-fit: cover;
-      object-position: center;
     }
 
     /* Text box */
@@ -71,24 +62,59 @@
       flex: 1;
       font-weight: 300;
       font-size: 1.2rem;
+      color: #13141b;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 32px;
+      justify-content: flex-start;
+      font-family: 'Raleway', sans-serif;
     }
 
-    /* Paragraph spacing */
-    .text-box p {
-      margin-bottom: 16px;
-      line-height: 1.5;
+    /* Buttons container */
+    .text-buttons {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
     }
 
-    /* Bold styling for name and Philosophy of teaching */
-    .bold-text {
-      font-weight: 700;
+    /* Buttons style */
+    .text-buttons button {
+      padding: 8px 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 2px solid #13141b;
+      border-radius: 8px;
+      background-color: white;
+      color: #13141b;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* MOBILE FIX */
+    .text-buttons button:hover,
+    .text-buttons button.active {
+      background-color: #13141b;
+      color: white;
+    }
+
+    /* Text paragraphs */
+    .text-content {
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    /* Bold styling for name and philosophy phrase */
+    .bold-semi {
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    /* Spacing between paragraphs inside content */
+    .text-content p {
+      margin-bottom: 1em;
+    }
+
+    /* Responsive mobile adjustments */
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -97,13 +123,22 @@
       }
 
       .image-box {
-        margin: 0 auto;
+        width: 250px !important;
+        height: 250px !important;
+        min-height: unset;
+        min-width: unset;
+        max-width: unset;
+        max-height: unset;
+        margin-top: 0;
       }
 
       .text-box {
         font-size: 1rem;
         padding: 20px 0;
-        gap: 24px;
+      }
+
+      .text-buttons {
+        justify-content: center;
       }
     }
   </style>
@@ -144,31 +179,21 @@
       <img src="docs/Billy-Office-Photo.jpeg" alt="Billy Mejia Office Photo" />
     </div>
     <div class="text-box">
-      <div>
-        <p>
-          My name is <span class="bold-text">Billy Mejia</span>, and I am a dedicated and passionate educator committed to fostering student growth and academic excellence. I hold a Bachelor of Arts in History with a minor in Education from the University of California, Merced, where I also earned my Preliminary Single Subject Teaching Credential in Social Science.
-        </p>
-        <p>
-          I have been interested in education and the transformative power of teaching since high school. My instructional approach focuses on fostering critical thinking, civic engagement, and meaningful connections to real-world issues. I strive to create a supportive, inclusive, and intellectually stimulating learning environment for all students.
-        </p>
-        <p>
-          My experience includes designing standards-aligned lessons, facilitating simulations and seminars, integrating technology in the classroom, and adapting instruction to meet diverse learning needs. I am particularly passionate about curriculum design that encourages student voice, inquiry, and active participation.
-        </p>
-        <p>
-          To learn more about my professional background, credentials, and teaching philosophy, please view the materials on the portfolio tab.
-        </p>
+      <div class="text-buttons">
+        <button id="btnBackground" class="active" type="button">Background</button>
+        <button id="btnPhilosophy" type="button">Philosophy of Teaching</button>
       </div>
 
-      <div>
-        <p>
-          As an Educator, my <span class="bold-text">philosophy of teaching</span> centers on providing every student with an equitable opportunity to succeed. I believe that education should be inclusive, accessible, and empowering for all learners—regardless of their background or circumstances. My goal is to foster a learning environment where students feel supported, challenged, and inspired to reach their full potential.
-        </p>
-        <p>
-          Beyond academic achievement, I strive to create a classroom experience that students will remember positively. I aim to build meaningful relationships, promote curiosity, and cultivate a sense of belonging. School should be a place where students not only gain knowledge, but also form lasting memories, build confidence, and discover who they are.
-        </p>
-        <p>
-          As a history teacher, I am especially passionate about helping students view the past with fresh eyes. I want to make history engaging, relevant, and reflective of diverse perspectives. I believe in the power of storytelling and historical thinking to help students understand the world around them and their role within it. Ultimately, I hope to inspire an appreciation for the work of historians and the importance of learning from our shared past.
-        </p>
+      <div id="backgroundText" class="text-content">
+        <p><span class="bold-semi">Billy Mejia</span> earned a Bachelor's degree in History with a minor in Education from the University of California, Merced. He also holds a preliminary Single Subject Social Science Teaching Credential from the same university. He has been passionate about education and becoming a teacher since high school, demonstrating a strong commitment to the field.</p>
+
+        <p>To learn more about my professional background, credentials, and teaching philosophy, please view the materials on the portfolio tab.</p>
+      </div>
+
+      <div id="philosophyText" class="text-content" style="display:none;">
+        <p>As an educator, my <span class="bold-semi">philosophy of teaching</span> is to provide students with an equitable opportunity to succeed in education. I also aim to offer students a memorable experience in school — something positive they can look back on.</p>
+
+        <p>Regarding history, I strive to provide students with a new outlook that fosters enjoyment and understanding of the importance of historians and the subject itself.</p>
       </div>
     </div>
   </main>
@@ -176,6 +201,30 @@
   <!-- Include sidebar toggle and PDF viewer scripts -->
   <script src="js/include.js"></script>
   <script src="js/viewer.js"></script>
+
+  <!-- Toggle text sections script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const btnBackground = document.getElementById('btnBackground');
+      const btnPhilosophy = document.getElementById('btnPhilosophy');
+      const backgroundText = document.getElementById('backgroundText');
+      const philosophyText = document.getElementById('philosophyText');
+
+      btnBackground.addEventListener('click', () => {
+        backgroundText.style.display = 'block';
+        philosophyText.style.display = 'none';
+        btnBackground.classList.add('active');
+        btnPhilosophy.classList.remove('active');
+      });
+
+      btnPhilosophy.addEventListener('click', () => {
+        backgroundText.style.display = 'none';
+        philosophyText.style.display = 'block';
+        btnPhilosophy.classList.add('active');
+        btnBackground.classList.remove('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
