@@ -128,7 +128,7 @@ body {
 .container-wrapper {
   display: flex;
   justify-content: center;
-  gap: clamp(10px, 3vw, 40px);
+  gap: clamp(5px, 1.5vw, 20px);
   margin: 20px auto 0;
   width: fit-content;
   flex-wrap: wrap;
