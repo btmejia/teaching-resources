@@ -33,23 +33,25 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* Image box (portrait shape, taller) */
+    /* New Circular Image Box */
     .image-box {
-      flex: 2;
-      background-color: #e6e9f1;
-      border-radius: 20px;
-      min-height: 450px;
+      flex: 0 0 auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      background-color: #e6e9f1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .image-box img {
       width: 100%;
-      height: auto;
-      border-radius: 20px;
+      height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     /* Text box */
@@ -63,7 +65,7 @@
       justify-content: center;
     }
 
-    /* New styling for name heading */
+    /* Name heading */
     .text-box h2 {
       font-weight: 700;
       font-size: 1.8rem;
@@ -72,7 +74,7 @@
       user-select: none;
     }
 
-    /* ✅ MOBILE FIX: Stack layout vertically on small screens */
+    /* MOBILE FIX */
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -81,8 +83,7 @@
       }
 
       .image-box {
-        width: 100%;
-        min-height: 300px;
+        margin: 0 auto;
       }
 
       .text-box {
