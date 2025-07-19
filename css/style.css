@@ -125,14 +125,13 @@ body {
   text-align: center;
   word-break: break-word;
   padding: 0 10px;
-  /* Removed white-space: nowrap to allow wrapping */
 }
 
 /* Pill Containers */
 .container-wrapper {
   display: flex;
   justify-content: center;
-  gap: clamp(5px, 1.5vw, 20px); /* Shrunk gap here */
+  gap: clamp(5px, 1.5vw, 20px);
   margin: 20px auto 0;
   width: fit-content;
   flex-wrap: wrap;
@@ -249,15 +248,15 @@ body {
 .assignments-wrapper {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* space between cards */
+  gap: 20px;
   justify-content: center;
-  padding-top: 50px; /* space from top */
+  padding-top: 50px;
   position: relative;
 }
 
 /* Assignment card */
 .expanded-panel .assignment-card {
-  position: static; /* override previous absolute */
+  position: static;
   max-width: 260px;
   width: 100%;
   padding: 10px 16px;
@@ -276,7 +275,7 @@ body {
 /* Circular Open PDF Button with icon */
 .open-pdf-btn {
   background-color: #fff;
-  color: #d9534f;
+  color: #d9534f; /* Default red */
   border: none;
   width: 64px;
   height: 64px;
@@ -299,6 +298,19 @@ body {
   font-weight: 500;
   font-size: 1.1rem;
   margin: 0;
+}
+
+/* Override magnifying glass icon color per section */
+.expanded-panel.section1-panel .open-pdf-btn {
+  color: #d9534f; /* red */
+}
+
+.expanded-panel.section2-panel .open-pdf-btn {
+  color: #337ab7; /* blue */
+}
+
+.expanded-panel.section3-panel .open-pdf-btn {
+  color: #5cb85c; /* green */
 }
 
 /* Modal styling */
@@ -492,22 +504,11 @@ footer p {
   .assignment-title {
     font-size: 1rem;
   }
+}
 
-  /* Center and wrap titles */
-  .subtitle {
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  .site-title {
-    text-align: center;
-    padding: 0 10px;
-  }
-
-  /* Move header titles down on mobile */
+/* Title spacing on mobile - move titles down */
+@media (max-width: 768px) {
   .header {
-    padding-top: 60px; /* Increased from 24px */
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 80px; /* add more top padding to push titles down */
   }
 }
