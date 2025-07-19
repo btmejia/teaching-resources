@@ -3,225 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About - Teaching Resources</title>
-
-  <link rel="stylesheet" href="css/style.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <title>About Me</title>
+  <!-- Raleway font -->
   <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
-
   <style>
-    /* Make About title same size as main page title */
-    header h1 {
-      font-size: 6rem;
-      font-weight: 700;
-      color: #13141b;
-      white-space: nowrap;
-      line-height: 1;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    /* Container for image + text side by side */
-    main {
-      display: flex;
-      max-width: 900px;
-      margin: 0 auto;
-      gap: 40px;
-      padding: 0 10px; /* updated left/right padding to 10px */
-      font-family: 'Raleway', sans-serif; /* Use Raleway font */
-    }
-
-    /* Image box (portrait shape, taller) */
-    .image-box {
-      flex: 2;
-      background-color: #e6e9f1;
-      border-radius: 50%; /* circle */
-      min-height: 350px;
-      min-width: 350px;
-      max-width: 350px;
-      max-height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-
-    .image-box img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    /* Text box */
-    .text-box {
-      flex: 1;
-      font-weight: 300;
-      font-size: 1.2rem;
-      color: #13141b;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+    body {
       font-family: 'Raleway', sans-serif;
-    }
-
-    /* Buttons container */
-    .text-buttons {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-    }
-
-    /* Buttons style */
-    .text-buttons button {
-      padding: 8px 16px;
-      font-size: 1rem;
-      font-weight: 600;
-      border: 2px solid #13141b;
-      border-radius: 8px;
-      background-color: white;
+      background-color: #f2f2fe;
       color: #13141b;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      padding: 20px;
+      max-width: 960px;
+      margin: 0 auto;
     }
-
-    .text-buttons button:hover,
-    .text-buttons button.active {
-      background-color: #13141b;
-      color: white;
-    }
-
-    /* Text paragraphs */
-    .text-content {
-      line-height: 1.6;
-      white-space: pre-wrap;
-    }
-
-    /* Bold styling for name and philosophy phrase */
-    .bold-semi {
+    .bold-text {
       font-weight: 600;
-      font-style: normal;
     }
-
-    /* Spacing between paragraphs inside content */
-    .text-content p {
-      margin-bottom: 1em;
+    .button-group {
+      margin-bottom: 20px;
     }
-
-    /* Responsive mobile adjustments */
-    @media (max-width: 768px) {
-      main {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .image-box {
-        width: 250px !important;
-        height: 250px !important;
-        min-height: unset;
-        min-width: unset;
-        max-width: unset;
-        max-height: unset;
-        margin-top: 0;
-      }
-
-      .text-box {
-        font-size: 1rem;
-        padding: 20px 0;
-      }
-
-      .text-buttons {
-        justify-content: center;
-      }
+    .toggle-btn {
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 8px 16px;
+      margin-right: 10px;
+      border: 2px solid #13141b;
+      background-color: transparent;
+      color: #13141b;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .toggle-btn.active {
+      background-color: #13141b;
+      color: #f2f2fe;
+    }
+    .text-section {
+      display: none;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .text-section.active {
+      display: block;
+    }
+    .text-section p {
+      margin-bottom: 1.25em;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="left-bar">
-    <div class="side-menu">
-      <a href="index.html">Teaching Resources</a>
-      <a href="about.html">About</a>
+  <div class="text-box">
+    <div class="button-group">
+      <button class="toggle-btn active" data-target="background">Background</button>
+      <button class="toggle-btn" data-target="philosophy">Philosophy of Teaching</button>
+    </div>
+
+    <div id="background" class="text-section active">
+      <p>
+        My name is <span class="bold-text">Billy Mejia</span>, and I am a dedicated and passionate educator committed to fostering student growth and academic excellence. I hold a Bachelor of Arts in History with a minor in Education from the University of California, Merced, where I also earned my Preliminary Single Subject Teaching Credential in Social Science.
+      </p>
+      <p>
+        I have been interested in education and the transformative power of teaching since high school. My instructional approach focuses on fostering critical thinking, civic engagement, and meaningful connections to real-world issues. I strive to create a supportive, inclusive, and intellectually stimulating learning environment for all students.
+      </p>
+      <p>
+        My experience includes designing standards-aligned lessons, facilitating simulations and seminars, integrating technology in the classroom, and adapting instruction to meet diverse learning needs. I am particularly passionate about curriculum design that encourages student voice, inquiry, and active participation.
+      </p>
+      <p>
+        To learn more about my professional background, credentials, and teaching philosophy, please view the materials on the portfolio tab.
+      </p>
+    </div>
+
+    <div id="philosophy" class="text-section">
+      <p>
+        As an Educator, my <span class="bold-text">philosophy of teaching</span> centers on providing every student with an equitable opportunity to succeed. I believe that education should be inclusive, accessible, and empowering for all learners—regardless of their background or circumstances. My goal is to foster a learning environment where students feel supported, challenged, and inspired to reach their full potential.
+      </p>
+      <p>
+        Beyond academic achievement, I strive to create a classroom experience that students will remember positively. I aim to build meaningful relationships, promote curiosity, and cultivate a sense of belonging. School should be a place where students not only gain knowledge, but also form lasting memories, build confidence, and discover who they are.
+      </p>
+      <p>
+        As a history teacher, I am especially passionate about helping students view the past with fresh eyes. I want to make history engaging, relevant, and reflective of diverse perspectives. I believe in the power of storytelling and historical thinking to help students understand the world around them and their role within it. Ultimately, I hope to inspire an appreciation for the work of historians and the importance of learning from our shared past.
+      </p>
     </div>
   </div>
 
-  <!-- Mobile sidebar overlay -->
-  <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
-    <button id="mobileSidebarClose" class="mobile-sidebar-close" aria-label="Close Menu">&times;</button>
-    <nav class="side-menu" role="menu">
-      <a href="index.html" role="menuitem" tabindex="0">Teaching Resources</a>
-      <a href="about.html" role="menuitem" tabindex="0">About</a>
-    </nav>
-  </div>
-
-  <!-- Hamburger circle button -->
-  <div class="circle-wrapper">
-    <div class="circle-button" id="menu-toggle">
-      <span class="menu-toggle">&#9776;</span>
-    </div>
-  </div>
-
-  <!-- Header -->
-  <header class="header">
-    <h1>About</h1>
-  </header>
-
-  <main>
-    <div class="image-box">
-      <img src="docs/Billy-Office-Photo.jpeg" alt="Billy Mejia Office Photo" />
-    </div>
-    <div class="text-box">
-      <div class="text-buttons">
-        <button id="btnBackground" class="active" type="button">Background</button>
-        <button id="btnPhilosophy" type="button">Philosophy of Teaching</button>
-      </div>
-
-      <div id="backgroundText" class="text-content">
-        <p><span class="bold-semi">Billy Mejia</span> earned a Bachelor's degree in History with a minor in Education from the University of California, Merced. He also holds a preliminary Single Subject Social Science Teaching Credential from the same university. He has been passionate about education and becoming a teacher since high school, demonstrating a strong commitment to the field.</p>
-
-        <p>To learn more about my professional background, credentials, and teaching philosophy, please view the materials on the portfolio tab.</p>
-      </div>
-
-      <div id="philosophyText" class="text-content" style="display:none;">
-        <p>As an educator, my <span class="bold-semi">philosophy of teaching</span> is to provide students with an equitable opportunity to succeed in education. I also aim to offer students a memorable experience in school — something positive they can look back on.</p>
-
-        <p>Regarding history, I strive to provide students with a new outlook that fosters enjoyment and understanding of the importance of historians and the subject itself.</p>
-      </div>
-    </div>
-  </main>
-
-  <!-- Include sidebar toggle and PDF viewer scripts -->
-  <script src="js/include.js"></script>
-  <script src="js/viewer.js"></script>
-
-  <!-- Toggle text sections script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const btnBackground = document.getElementById('btnBackground');
-      const btnPhilosophy = document.getElementById('btnPhilosophy');
-      const backgroundText = document.getElementById('backgroundText');
-      const philosophyText = document.getElementById('philosophyText');
+    // Toggle functionality for buttons and text sections
+    const buttons = document.querySelectorAll('.toggle-btn');
+    const sections = document.querySelectorAll('.text-section');
 
-      btnBackground.addEventListener('click', () => {
-        backgroundText.style.display = 'block';
-        philosophyText.style.display = 'none';
-        btnBackground.classList.add('active');
-        btnPhilosophy.classList.remove('active');
-      });
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and sections
+        buttons.forEach(btn => btn.classList.remove('active'));
+        sections.forEach(sec => sec.classList.remove('active'));
 
-      btnPhilosophy.addEventListener('click', () => {
-        backgroundText.style.display = 'none';
-        philosophyText.style.display = 'block';
-        btnPhilosophy.classList.add('active');
-        btnBackground.classList.remove('active');
+        // Add active to clicked button and corresponding section
+        button.classList.add('active');
+        const targetId = button.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
       });
     });
   </script>
