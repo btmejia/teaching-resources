@@ -102,6 +102,15 @@
     </div>
   </div>
 
+  <!-- Mobile sidebar overlay -->
+  <div id="mobileSidebarOverlay" class="mobile-sidebar-overlay" aria-hidden="true" role="dialog" aria-modal="true" tabindex="-1">
+    <button id="mobileSidebarClose" class="mobile-sidebar-close" aria-label="Close Menu">&times;</button>
+    <nav class="side-menu" role="menu">
+      <a href="index.html" role="menuitem" tabindex="0">Teaching Resources</a>
+      <a href="about.html" role="menuitem" tabindex="0">About</a>
+    </nav>
+  </div>
+
   <!-- Hamburger circle button -->
   <div class="circle-wrapper">
     <div class="circle-button" id="menu-toggle">
@@ -126,8 +135,9 @@
     </div>
   </main>
 
-  <!-- Include sidebar toggle script -->
+  <!-- Include sidebar toggle and PDF viewer scripts -->
   <script src="js/include.js"></script>
+  <script src="js/viewer.js"></script>
 
 </body>
 </html>
