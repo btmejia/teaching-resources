@@ -562,8 +562,8 @@ footer p {
 }
 
 .image-box img {
-  width: 130%;   /* zoom in horizontally */
-  height: 130%;  /* zoom in vertically */
+  width: 200%;   /* zoom in horizontally */
+  height: 200%;  /* zoom in vertically */
   object-fit: cover;
   object-position: center 60%; /* shift image down inside the circle */
 }
