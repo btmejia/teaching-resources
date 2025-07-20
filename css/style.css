@@ -558,12 +558,12 @@ footer p {
   justify-content: center;
   background-color: #e6e9f1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 30px; /* moves the whole circle down a bit */
+  margin-top: 20px; /* moves the whole circle down a bit */
 }
 
 .image-box img {
-  width: 400%;   /* zoom in horizontally */
-  height: 400%;  /* zoom in vertically */
+  width: 500%;   /* zoom in horizontally */
+  height: 500%;  /* zoom in vertically */
   object-fit: cover;
-  object-position: center 60%; /* shift image down inside the circle */
+  object-position: center 50%; /* shift image down inside the circle */
 }
