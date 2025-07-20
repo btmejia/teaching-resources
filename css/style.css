@@ -558,7 +558,7 @@ footer p {
   justify-content: center;
   background-color: #e6e9f1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 20px; /* moves the whole circle down a bit */
+  margin-top: 0px; /* moves the whole circle down a bit */
 }
 
 .image-box img {
