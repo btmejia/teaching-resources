@@ -566,6 +566,6 @@ footer p {
   height: 100%;
   object-fit: cover;
   object-position: center; /* Keep this centered */
-  transform: scale(2) translate(0%, 25%); /* Zoom in and shift right/down */
+  transform: scale(2) translate(5%, 22%); /* Zoom in and shift right/down */
   transition: transform 0.3s ease;
 }
