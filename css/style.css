@@ -513,21 +513,21 @@ footer p {
   }
 }
 
-/* UPDATED TOGGLE BUTTONS STYLE */
+/* === UPDATED TOGGLE BUTTONS STYLES === */
 .toggle-buttons button {
   padding: 10px 16px;
   font-size: 1rem;
-  border: 2px solid #13141b;    /* Dark border */
+  border: 2px solid #13141b; /* Dark border */
   border-radius: 8px;
-  background-color: #f2f2fe;     /* Light background */
-  color: #13141b;                /* Dark text */
+  background-color: #f2f2fe; /* Light background */
+  color: #13141b; /* Dark text */
   cursor: pointer;
   font-family: 'Raleway', sans-serif;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
 .toggle-buttons button:hover {
-  background-color: #13141b;    /* Dark background */
-  color: #f2f2fe;               /* Light text */
-  border-color: #f2f2fe;        /* Light border */
+  background-color: #13141b; /* Dark background */
+  color: #f2f2fe; /* Light text */
+  border-color: #f2f2fe; /* Light border */
 }
