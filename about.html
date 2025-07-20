@@ -8,16 +8,23 @@
   <!-- Load Raleway font -->
   <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- Load Font Awesome for icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
 
   <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Raleway', sans-serif;
       background-color: #f2f2fe;
+      font-family: 'Raleway', sans-serif;
       font-weight: 300;
       min-height: 100vh;
       overflow-x: hidden;
@@ -42,6 +49,7 @@
       padding: 0 10px;
     }
 
+    /* Image box with zoomed-in image and shifted down */
     .image-box {
       flex: 0 0 auto;
       width: 180px;
@@ -60,16 +68,23 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      transform: scale(1.5) translate(4%, 16%);
+      transition: transform 0.3s ease;
     }
 
+    /* Text box with flex layout: text left, buttons right */
     .text-box {
-      flex: 1;
-      font-weight: 300;
-      font-size: 1.2rem;
+      position: relative;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 32px;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+      flex: 1;
+    }
+
+    /* Text content takes most space */
+    .text-box > div:first-child {
+      flex: 1;
     }
 
     .text-box p {
@@ -81,6 +96,47 @@
       font-weight: 700;
     }
 
+    .hidden {
+      display: none;
+    }
+
+    /* New right side buttons container */
+    .right-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-shrink: 0;
+      min-width: 180px;
+    }
+
+    /* Buttons styling (like toggle buttons) */
+    .right-buttons button {
+      padding: 10px 16px;
+      font-size: 1rem;
+      border: 2px solid #13141b;
+      border-radius: 8px;
+      background-color: #f2f2fe;
+      color: #13141b;
+      cursor: pointer;
+      font-family: 'Raleway', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .right-buttons button:hover {
+      background-color: #13141b;
+      color: #f2f2fe;
+      border-color: #f2f2fe;
+    }
+
+    /* Icon size inside buttons */
+    .right-buttons i {
+      font-size: 1.2rem;
+    }
+
+    /* Toggle Buttons at top styles */
     .toggle-buttons {
       display: flex;
       justify-content: center;
@@ -88,29 +144,25 @@
       margin-bottom: 20px;
     }
 
-    /* UPDATED BUTTON STYLES: light bg, dark border/text; invert on hover */
     .toggle-buttons button {
       padding: 10px 16px;
       font-size: 1rem;
-      border: 2px solid #13141b; /* dark border */
+      border: 2px solid #13141b;
       border-radius: 8px;
-      background-color: #f2f2fe; /* light background */
-      color: #13141b; /* dark text */
+      background-color: #f2f2fe;
+      color: #13141b;
       cursor: pointer;
       font-family: 'Raleway', sans-serif;
       transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     }
 
     .toggle-buttons button:hover {
-      background-color: #13141b; /* dark background on hover */
-      color: #f2f2fe; /* light text on hover */
-      border-color: #f2f2fe; /* light border on hover */
+      background-color: #13141b;
+      color: #f2f2fe;
+      border-color: #f2f2fe;
     }
 
-    .hidden {
-      display: none;
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
       main {
         flex-direction: column;
@@ -123,9 +175,24 @@
       }
 
       .text-box {
-        font-size: 1rem;
-        padding: 20px 0;
-        gap: 24px;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .text-box > div:first-child {
+        width: 100%;
+      }
+
+      .right-buttons {
+        flex-direction: row;
+        justify-content: center;
+        min-width: auto;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .right-buttons button {
+        flex: 1;
       }
 
       .toggle-buttons {
@@ -203,6 +270,16 @@
         <p>
           As a history teacher, I am especially passionate about helping students view the past with fresh eyes. I want to make history engaging, relevant, and reflective of diverse perspectives. I believe in the power of storytelling and historical thinking to help students understand the world around them and their role within it. Ultimately, I hope to inspire an appreciation for the work of historians and the importance of learning from our shared past.
         </p>
+      </div>
+
+      <!-- New right side buttons -->
+      <div class="right-buttons">
+        <button>
+          <i class="fas fa-briefcase"></i> Portfolio
+        </button>
+        <button>
+          <i class="fas fa-address-book"></i> Contact Information
+        </button>
       </div>
     </div>
   </main>
